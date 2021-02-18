@@ -1,0 +1,139 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-10 18:46:41
+ * @LastEditTime: 2020-11-12 17:24:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \京东\shortcut.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/shortcut.css" />
+  </head>
+  <body>
+    <div class="SC">
+      <ul class="fl clearfix">
+        <li>
+          <a href="#"><i class="SC-iconfont">&#xe601;</i>河南</a>
+        </li>
+      </ul>
+      <!-- GS -->
+      <!-- <div class="dropdown-layer">
+            <div class="areamini-content">
+                <div class="area-items">
+                    <div class="item"><a href="">北京</a></div>
+                    <div class="item"><a href="">北京</a></div>
+                    <div class="item"><a href="">北京</a></div>
+                </div>                
+            </div>
+        </div> -->
+      <ul class="fr clearfix">
+        <li class="dis">
+          <a href="">你好，请登录</a>
+          <a href="" class="F00">免费注册</a>
+        </li>
+        <li class="space"></li>
+        <li><a href="">我的订单</a></li>
+        <li class="space"></li>
+        <li  class="MY-JDcontent">
+          <a href="">我的京东<i class="FS-iconfont">&#xe607;</i></a>
+        </li>
+        <li class="space"></li>
+        <li><a href="">京东会员</a></li>
+        <li class="space"></li>
+        <li>
+          <a href="" class="F00">企业采购<i class="FS-iconfont">&#xe607;</i></a>
+        </li>
+        <li class="space"></li>
+        <li>
+          <a href="">客户服务<i class="FS-iconfont">&#xe607;</i></a>
+        </li>
+        <li class="space"></li>
+        <li>
+          <a href="">网站导航<i class="FS-iconfont">&#xe607;</i></a>
+        </li>
+        <li class="space"></li>
+        <li><a href="">手机京东</a></li>
+      </ul>
+      <!-- 我的京东 -->
+      <div class="MY-JD">
+        <div class="myjdlist">
+          <div class="fore1">
+            <div class="item">
+              <a href="//order.jd.com/center/list.action" target="_blank">待处理订单<span class="shortcut_num style-red"></span>
+              </a>
+            </div>
+            <div class="item">
+              <a href="//myjd.jd.com/afs/indexNew.action?entry=1" target="_blank">返修退换货</a>
+            </div>
+            <div class="item">
+              <a href="//t.jd.com/product/followProductList.action?isReduce=true" target="_blank">降价商品<span class="shortcut_num style-red"></span>
+              </a>
+            </div>
+          </div>
+          <div class="fore2">
+            <div class="item">
+              <a href="//joycenter.jd.com/msgCenter/queryHistoryMessage.action" target="_blank" rel="noopener noreferrer">消息<span class="shortcut_num style-red"></span>
+              </a>
+            </div>
+            <div class="item">
+              <a href="//joycenter.jd.com/msgCenter/queryHistoryMessage.action" target="_blank" rel="noopener noreferrer">消息<span class="shortcut_num style-red"></span>
+              </a>
+            </div>
+            <div class="item">
+              <a href="//joycenter.jd.com/msgCenter/queryHistoryMessage.action" target="_blank" rel="noopener noreferrer">消息<span class="shortcut_num style-red"></span>
+              </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script>
+      //渲染地区分布
+      function renderAreaDom(data) {
+        console.log(data);
+        var areaDiv = $('<div class="dropdown-layer"></div>');
+        var areaDivcontent = $('<div class="areamini-content"></div>');
+        var areaDivitems = $('<div class="area-items"></div>');
+        data.forEach(function (ele) {
+          $(
+            `<div class="item"><a href="">${ele.name.slice(0, 2)}</a></div>`
+          ).appendTo(areaDivitems);
+        });
+        areaDivitems.appendTo(areaDivcontent);
+        areaDiv.append(areaDivcontent).appendTo($(".SC")).show();
+        $(".fl>li").css("backgroundColor", "#fff");
+      }
+      var areaTimer = null;
+      $(".SC>.fl>li").mouseenter(function () {
+        clearTimeout(areaTimer);
+        areaTimer = setTimeout(function () {
+          $.ajax({
+            url: "/area",
+            dataType: "json",
+            success: function (res) {
+              renderAreaDom(res.area);
+              $(".SC .dropdown-layer").mouseleave(function () {
+                console.log("a");
+                $(".SC .dropdown-layer").hide();
+                $(".fl>li").css("backgroundColor", "#e3e4e5");
+              });
+            },
+          });
+        }, 100);
+      });
+      $('.MY-JDcontent').mouseover(function(){
+
+        $('.MY-JD').show();
+        $(this).css('backgroundColor', '#fff')
+      })
+      $('.MY-JD').mouseleave(function(){
+        $(this).hide();
+        $('.MY-JDcontent').css('backgroundColor', '#e3e4e5')
+      })
+    </script>
+  </body>
+</html>

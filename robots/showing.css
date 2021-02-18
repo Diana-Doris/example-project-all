@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear:both;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+
+.wrapper{
+    width: 600px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #eee;
+    position: relative;
+}
+/* 标题 */
+.wrapper .title{
+    height: 40px;
+    line-height: 40px;
+    background-color: grey;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* 内容区 */
+.wrapper .content{
+    max-height: calc(100% - 40px - 50px);
+    overflow-y: scroll;
+    padding: 0 10px;
+
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.wrapper .content img{
+    width: 30px;
+    height: 30px;
+}
+.text{
+    padding: 0 10px;
+    line-height: 30px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 250px;
+}
+.text::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    border: 5px solid transparent;
+}
+
+.mine{
+    float: right;
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+} 
+.mine .text{
+    float: right;
+    margin-right: 5px;
+    background-color: greenyellow;
+}
+.mine .text::after {
+    border-left-color: greenyellow;
+    right: -10px;
+}
+
+.others{
+    float: left;
+    display: block;
+    width: 100%;
+}
+.others .text{
+    float: left;
+    margin-left: 5px;
+    background-color: #fff;
+}
+.others .text::after {
+    border-right-color: #fff;
+    left: -10px;
+}
+
+/* 输入信息区 */
+.wrapper .sendmsg{
+    height: 50px;
+    position: absolute;
+    background-color: #ddd;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+}
+.sendmsg{
+    height: 50px;
+    position: absolute;
+    background-color: #ddd;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+}
+.sendmsg #search {
+    padding-left: 10px;
+    width: 500px;
+    height: 30px;
+}
+.sendmsg #sendbtn {
+    height: 30px;
+    width: 80px;
+}

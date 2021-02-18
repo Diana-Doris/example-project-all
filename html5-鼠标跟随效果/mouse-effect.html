@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Effect</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas{
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="circle"></canvas>
+    <script>        
+        /** @type {HTMLCanvasElement} */
+        let canvas = document.querySelector('#circle'),
+            paintBrush = canvas.getContext('2d'),
+            circleList = [];//存储圆的数据
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        //生成随机指定范围的数字
+        function dataRandom(min, max){
+            return Math.round(Math.random() * (max - min) + min)
+        }
+
+        //存储圆的数据
+        function Circle(x, y){
+            this.x = x;
+            this.y = y;
+            this.speed =  (Math.random() - 0.5) * 3//飘散速度
+            this.color = `rgb(${dataRandom(0, 255)}, ${dataRandom(0, 255)}, ${dataRandom(0, 255)})`;
+            this.circleAlpha = 1;
+        }
+        Circle.prototype = {
+            /* 创建圆 */
+            draw(){
+                paintBrush.beginPath();
+                paintBrush.fillStyle = this.color;
+                paintBrush.globalCompositeOperation = 'lighter';
+                paintBrush.globalAlpha = this.circleAlpha;
+                paintBrush.arc(this.x, this.y, 30, 0, Math.PI*2);
+                paintBrush.fill();
+                this.updata()
+            },
+            updata(){
+                this.x += this.speed;
+                this.y += this.speed;
+                this.circleAlpha *= .98;
+            }
+        }
+        canvas.addEventListener('mousemove', function(e){
+            circleList.push(new Circle(e.clientX, e.clientY))
+        })
+        function render(){
+            paintBrush.clearRect(0, 0, canvas.width, canvas.height);
+            circleList.forEach((ele,index)=>{
+                ele.draw();
+                console.log(ele.circleAlpha)
+                if(ele.circleAlpha < 0.05){
+                    circleList.splice(index, 1)
+                }
+            })
+            requestAnimationFrame(render)
+        }
+        render();
+
+
+    </script>
+    
+
+</body>
+</html>

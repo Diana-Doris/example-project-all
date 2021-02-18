@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-14 22:40:42
+ * @LastEditTime: 2020-11-15 16:17:13
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \fu学生管理系统jquery\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plug-in</title>
+    <link rel="stylesheet" href="./js/turnpage.css">
+</head>
+<body>
+    <!-- 
+        封装翻页插件
+        1. 明确插件的使用（希望的是选中一个区域调用一方法，就在那个区域里面插入这个翻页功能）
+        2. 明确传入的数据信息（翻页需要传递哪些数据？如果页面中有很多这个翻页的功能的话，每一个功能
+        都有自己的独立信息，当前页码的独立，当前的总页数也是独立的，找不同之处）
+
+            封装一个实例，需要在$.fn.extend(函数名字：函数体)；
+            在写插件之前不希望里面的变量对全局有任何的污染，所以我们在这里写一个封闭作用域的一个处理，用立即执行函数可以解决
+
+     -->
+     <div id="demo"></div>
+	<script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+    <script src="./js/turnPage.js"></script>
+    <script>
+        $('#demo').turnPage({
+            currentpage:1,
+            totalpage:5
+        })
+    </script>
+    <!-- 
+        登录功能：
+            1. 如果用户没有登录的话，就不让它访问这个页面；怎么监测呢？用户登录之后，我们可以改变一个状态，
+            可以把他的登录信息存在本地当中，例如：localstorage中，
+
+            正常的登录，后天不会只单纯的返回status || 描述，一般会返回一个tooken，一个编码，给我们用户当前返回一个唯一的它的代码 || 代号，
+            然后把这个代号一种是存在cookie中 || 请求头的tooken当中，如果有这个的话我们直接就存储下来了；
+            我们这里既然没有的话，直接存储它的一个数据。
+            然后我们在已经跳转的页面当中，session值还有存在着，我们不想让用户没有登录就直接访问，我们就在手首页index.html当中
+            做一个判断判断用户是否是登录的状态，获取sessionStorage存储的信息，和后台获取ajax（）中的值相匹配。
+            2. 
+     -->
+</body>
+</html>

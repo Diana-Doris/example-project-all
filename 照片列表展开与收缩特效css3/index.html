@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Picture-showing</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="Wrap">
+      <ul class="up">
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img1</h2>
+            <div class="direction">
+              <div class="header">bird1</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img2</h2>
+            <div class="direction">
+              <div class="header">bird2</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img3</h2>
+            <div class="direction">
+              <div class="header">bird3</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img4</h2>
+            <div class="direction">
+              <div class="header">bird4</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img5</h2>
+            <div class="direction">
+              <div class="header">bird5</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <div class="img"></div>
+            <h2>img6</h2>
+            <div class="direction">
+              <div class="header">bird6</div>
+              <div class="close"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      var lis = document.querySelectorAll(".Wrap ul li");
+      var oul = document.querySelector('.Wrap ul');
+      var timer = null;
+      var timer = setTimeout(function () {
+        oul.className = "";
+      }, 200);
+      var last = null;
+      var btns = document.querySelectorAll('.close');
+      lis.forEach(function (ele, index) {
+            ele.onclick = function(){
+
+                last && (last.className = '');
+                oul.setAttribute('id','wrapper');
+                this.classList.add('active')
+                last = this;                
+            }
+            btns[index].onclick = function(e){
+                
+                oul.removeAttribute('id');
+                lis[index].className = '';
+                last = null;
+                e.cancelBubble = true;
+            }
+      });
+    </script>
+  </body>
+</html>

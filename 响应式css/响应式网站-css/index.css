@@ -1,0 +1,210 @@
+*{
+    padding: 0;
+    margin: 0;   
+}
+/* .wrapper{
+    padding-bottom: 1100px;
+}    */
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(250, 246, 246, 0.85)
+}
+.wrapper header{
+    padding: 0 10%;
+    width: 100%;
+    height: 7%;
+    margin: 0 auto;
+    background-color: rgb(20, 20, 20);
+
+    position: fixed;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .3s;
+    z-index: 1024;
+}
+
+.wrapper header .titlepic{
+    height: 80%;
+    width: 8%;
+    background: url(./logo.png) no-repeat center;
+    background-size: contain;
+}
+header nav{
+    width: 75%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+}
+header nav .footpic{
+    opacity: 0;
+    transition: .5s;
+    width: 7%;
+    background: url(./logo.png) no-repeat center;
+    background-size: contain;
+}
+.wrapper header .Collections{
+    position: relative;
+    width: 80%;
+    color: rgb(255, 208, 196);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* transition: 0s; */
+}
+.wrapper header .Collections .item{
+    padding: 3% 5px;
+    width: 100%;
+    
+    white-space: nowrap;
+    position: relative;
+}
+.wrapper header .Collections .item::after{
+    content: '';
+    height: 2px;
+    width: 0%;
+    background-color: rgb(240, 229, 229);
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    display: block;
+    transition: .4s;
+    opacity: 0;
+}
+.wrapper header .Collections .item:hover::after{
+    width: 100%;
+    opacity: 1;
+}
+.wrapper .pacAll{
+    width: 100%;
+    height: 80%;
+    position: relative;
+    /* padding-top: 5%; */
+    overflow: hidden;
+    /* transition: .5s; */
+}
+.wrapper .pacAll .inner{
+    box-sizing: border-box;
+    width: 300vw;
+    height: 100%;
+    display: flex;
+
+    position: absolute;
+    left: 0;
+    list-style: none;
+    /* transition: .5s; */
+}
+.wrapper .pacAll .inner img{
+    width: 100vw;
+    height: 100%;
+}
+#porject{
+    margin: 40px 0;
+}
+#porject .title{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #bbb;
+}
+#porject .title p{
+    font-weight: bold;
+}
+#porject .list{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#porject .list div{
+    margin: 15px 0;
+    padding: 20px 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+#porject .list div img{
+    width: 90%;
+    opacity: 0.9;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .3s;
+}
+#porject .list div img:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+#porject .list div p{
+    margin-top: 6px;
+}
+
+
+/* 540px	720px	960px	1140px */
+@media all and (min-width:768px){
+    #porject .list{
+        width: 720px;
+    }
+    #porject .list div{
+        width: 46%;
+    }
+}
+@media all and (min-width:992px){
+    #porject .list{
+        width: 960px;
+    }
+    #porject .list div{
+        width: 30%;
+    }
+}
+@media all and (min-width:1200px){
+    #porject .list{
+        width: 1140px;
+    }
+    #porject .list div{
+        width: 22%;
+    }
+}
+@media all and (max-width: 737px){
+    .wrapper header{
+        height: 5%;
+    } 
+}
+@media all and (min-width: 575px){
+    .wrapper header nav .Collections{
+        transform: scaley(1) !important ;
+        opacity: 1 !important;
+    }
+    
+}
+@media all and (max-width: 575px){    
+    header nav .footpic{
+        opacity: 1;
+    }
+    .wrapper header nav .Collections{
+        flex-direction: column;
+        justify-content: start;
+        font-size: 16px;
+        top: 100%;
+        transform-origin: top;
+        transform: scaley(0);
+        /* opacity: 0; */
+    }
+    .wrapper header nav .Collections .item{
+        /* padding: px 0; */
+        justify-content: center;
+        height: 50px;
+        background-color: brown;
+        display: flex;
+    }
+    .wrapper .pacAll{
+        height: 50%;
+    }
+    .wrapper .pacAll .inner{
+        height: 100%;
+    }
+}

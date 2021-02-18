@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 2195460 */
+    src: url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.eot');
+    src: url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.eot?#iefix') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.woff2') format('woff2'),
+    url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_2195460_bq0nlrznb4o.svg#iconfont') format('svg');
+  }
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+i,p{
+    font-style: normal;
+}
+body{
+    background-color: #f4f4f4;
+    font-size: 12px;
+    color: #666;
+}
+a{  
+    text-decoration: none;
+    white-space: nowrap;
+    color: #666;
+}
+li{
+    list-style: none;
+}
+a:hover{
+   color: #f10215 !important;
+}
+.Wrap{
+    width: 1190px;
+    margin: 0 auto;
+}
+.FS-iconfont{
+    font-family: 'iconfont';
+    font-style: normal;
+    transform: scale(.8);   
+    display: inline-block; 
+    margin-left: 5px;
+}
+.SC-iconfont{
+    font-family: 'iconfont';
+    font-size: 14px;
+    color: #f10215;
+    margin-right: 4px;
+}
+.H-inconfont{
+    font-family: 'iconfont';
+}
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 导航区 */
+#shortcut{
+    height: 30px;
+    line-height: 30px;
+    background-color: #e3e4e5;
+}
+/* 搜索区 */
+#header{
+    height: 139px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+/* 轮播图区 */
+#fs{
+    height: 480px;
+    margin-bottom: 30px;
+}
+/* 秒杀区 */
+#J_seckill{
+    height: 260px;
+    /* background-color: brown; */
+}
+

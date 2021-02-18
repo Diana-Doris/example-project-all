@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/fs.css" />
+
+  </head>
+  <body>
+    <!-- 
+小知识：
+    1.a标签有自己默认的颜色，要想在body中设置，就只有单独添加a标签改变字体颜色
+    2.a标签是一个行块级元素不可以设置宽高，如果想要设置的时候，就改变display值为inline-block就可以了
+    3.float浮动可以设置宽度，它可以用来设置广告区域的右边大小给它浮动了一下，那么剩下的区域就是希望交给另一个div分配处理，
+    正常的float浮动元素是文字包裹着图片的效果，这个float就有这么一个特点，设置了一个浮动之后，然后另一个元素我们就可以让它撑满剩下的一个区域，
+    只需要我们设置一个overflow-hidden就可以了，然后记得清楚浮动，或者说可以用position定位来说也是可以的
+    4.在设置dt中的a标签和dd中的a标签之后没有在一个水平线上，因为基线的问题,我们的inline-block中的元素会以小写字母x的底线对齐，
+    如果没有小写字母x认为是在外层的盒子底部的，也就是margin的底部。可以通过行高调节，height && line-height:22px;
+    5.在dd里面的a标签如果多了，会造成一个问题，就是dt内容会换行；一种办法：给dd固定宽度；
+    6.如果想要a标签嵌套块级元素了的话就把a标签的display值改为block
+
+对每一个li对应的写一个div结构，还是写了一个结构只改变里面的内容？
+前者优点：就是再次进入到页面，再拿到数据的时候，都已经渲染完了，不涉及到回流和重绘；  
+    缺点：整个页面的结构就会比较复杂，重复的代码比较多
+后者优点：页面结构很简单
+    缺点：在我们每次鼠标移入指定的导航的时候，都需要重新的绘制这个页面当中这一部分内容
+所以说，这个哪一个比较合适，就要看项目的需求。
+就京东页面来说，我们所要构建的结构是一个绝对区域，水平排布的相对于我们导航区域的，是脱离正常文档排列的，
+当我们鼠标移入指定导航区的时候，它改变的这一部分的结构对于我们整个页面当中其位置没有什么影响，并且我们页面当中的结结构相对来说比较简单
+
+步骤：1.先把结构和样式写出来，注意：在最外层的index.css中要引入icon图标
+     2.渲染数据，首先在左侧区域中，渲染每一个li标签的时候，要知道li>a标签的生成取决于数据里面的titles数组对象，
+     所以说在生成li标签的时候，用map函数进行操作返回数组，然后用join('/')函数用转义字符连接，就可以生成a标签的字符串；
+     3.鼠标移入左侧区域的时候，让右侧的对应区域显示出来，需要个我们的li绑定事件，li是要等到拿到数据之后才会渲染，所以用事件委托；
+     添加到页面当中一直存在的一个元素身上，通过事件冒泡让它去出发里面每个li的事件（鼠标事件）。
+     
+
+     在右侧信息区中，想要两个页面进行切换运动的时候，可以先将一个页面用position：absolute；transform：translateY()；因为可以将图片
+     相对于父级。进行变化，先设置最开始的位置，然后让它在底部。
+
+
+     -->
+     <!-- 左侧商品区 -->
+    <div class="clearfix">
+      <div class="fs1 clearfix">
+        <!-- 左侧用品展示区 -->
+        <ul id="menu">
+          <!-- <li><a href="">家用电器</a></li>
+
+                <li>
+                    <a href="">家用电器</a>
+                    <a href="">家用电器</a>
+                </li> -->
+        </ul>
+        <!-- 左侧用品对应区 -->
+        <div id="menu-content">
+          <!-- <div class="tabs">
+                    <a href="#" class="tabs_header">砍价+送礼包<i class="FS-iconfont">&#xe61e;</i></a>
+                    <a href="#" class="tabs_header">砍价+送礼包<i class="FS-iconfont">&#xe61e;</i></a>
+                    <a href="#" class="tabs_header">砍价+送礼包<i class="FS-iconfont">&#xe61e;</i></a>
+                    <a href="#" class="tabs_header">砍价+送礼包<i class="FS-iconfont">&#xe61e;</i></a>
+                </div>
+                <div class="subs">
+                    <dl class="clearfix">
+                        <dt><a href="" hre="#">电视</a></dt>
+                        <dd>
+                            <a href="#">好看电视</a>
+                            <a href="#">好看电视</a>
+                            <a href="#">好看电视</a>
+                        </dd>
+                    </dl>
+                </div> -->
+          <div class="ads">广告</div>
+        </div>
+      </div>
+<!-- 中间轮播图区 -->
+      <div class="fs2">
+       <div class="slidercenter">
+        <div class="itemcenter">
+          <a href="//pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3" class="focus-item__core" target="_blank"alt="主会场">
+            <img class="focus-item-img" src="http://img20.360buyimg.com/babel/s590x470_jfs/t1/151124/40/6064/200598/5faa04dcEc52f77e1/8f0fa5b098fba280.jpg.webp" alt="主会场">
+          </a>
+        </div>
+        <div class="itemcenter">
+          <a href="//pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3" class="focus-item__core" target="_blank"alt="主会场">
+            <img class="focus-item-img" src="http://img11.360buyimg.com/pop/s590x470_jfs/t1/137217/31/15154/70538/5fa75548Ea935cbe6/d6355ac774f80c6f.jpg.webp" alt="主会场">
+          </a>
+        </div>
+        <div class="itemcenter">
+          <a href="//pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3" class="focus-item__core" target="_blank"alt="主会场">
+            <img class="focus-item-img" src="http://img11.360buyimg.com/pop/s590x470_jfs/t1/128317/6/16862/34674/5f9e2a83Ebb12340a/0c1aa74603807876.jpg.webp" alt="主会场">
+          </a>
+        </div>
+        <div class="itemcenter">
+          <a href="//pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3" class="focus-item__core" target="_blank"alt="主会场">
+            <img class="focus-item-img" src="http://img10.360buyimg.com/da/s590x470_jfs/t1/154676/9/4070/97420/5f9bc1caEfaa8873d/439e4611b685d880.jpg.webp" alt="主会场">
+          </a>
+        </div>      
+       </div>
+      </div>
+<!-- 轮播图区右侧 -->
+      <div class="fs3 clearfix">
+        <div class="sliderright clearfix">
+          <div class="itemright">
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img11.360buyimg.com/babel/s380x300_jfs/t1/123242/16/16845/50917/5f9bf9ccE52af367e/add6c26d6ec23cf6.jpg.webp">
+              </a>
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img10.360buyimg.com/babel/s380x300_jfs/t1/145732/35/13858/54655/5faa3eb6E741939ba/d7e3c702652d4522.jpg.webp">
+              </a> 
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img20.360buyimg.com/babel/s380x300_jfs/t1/152150/15/5359/53636/5fa9ee46E78c94239/8c7f4f68ff23f71f.jpg.webp">
+              </a>
+          </div>
+
+          <div class="itemright">
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img20.360buyimg.com/babel/s380x300_jfs/t1/125636/12/16806/63810/5f9c2197E7a1f4854/fb77c0f1fa77c63e.jpg.webp">
+              </a>
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                  <img alt="" class="recommend-item__image" src="//img20.360buyimg.com/babel/s380x300_jfs/t1/125636/12/16806/63810/5f9c2197E7a1f4854/fb77c0f1fa77c63e.jpg.webp">
+                </a>
+              </a> 
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img30.360buyimg.com/babel/s380x300_jfs/t1/134265/10/14687/78883/5fa2bc35Ef0ab989b/5a0e2e01dac9721c.jpg.webp">
+              </a>
+          </div>
+
+          <div class="itemright">
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img10.360buyimg.com/babel/s380x300_jfs/t1/142609/5/12454/69560/5f994593Ec266719d/6bb7778f3e5615f0.jpg.webp">
+              </a>
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img10.360buyimg.com/babel/s380x300_jfs/t1/142609/5/12454/69560/5f994593Ec266719d/6bb7778f3e5615f0.jpg.webp">
+              </a> 
+              <a href="//pro.jd.com/mall/active/3LKWVdkbhqhPt14koUKBs9wSp1cZ/index.html" target="_blank" class="recommend-item fade-in" clstag="h|keycount|head|rmd_02a" aria-label="今日推荐 第2帧第1个坑位">
+                <img alt="" class="recommend-item__image" src="//img12.360buyimg.com/babel/s380x300_jfs/t1/153621/35/4337/56962/5f9f74efE95bb3a39/9252d6734487bdbd.jpg.webp">
+              </a>
+          </div>
+        </div>
+      </div>
+      <!-- 信息区 -->
+      <div class="fs4">
+        <div class="fs-user">
+          <div class="userinner">
+            <div>
+              <div class="avatar">
+                <a class="user_avatar_lk" href="//home.jd.com" target="_blank" clstag="h|keycount|head|login_01" aria-label="个人头像"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABGdBTUEAALGPC/xhBQAAAAZiS0dEAP8A/wD/oL2nkwAAEB5JREFUeNrtnGmMVVUSgN/v8cdARGEUZAmKyNrohGjcEo0a97jEGDXqD43RUfYRjDExrtFonIxOxhhBTYxGorgByr41yNY7TdMLNA29AE3T3SC4/Kg535lbL9XHe9973dDQ4PtR6XffO3c5362qU6dOnU51dHZKXnouqTyEPMA8wDzAPMC85AHmAeYB5gHmJQ8wDzAPMA8wL3mAeYB5gHmAeTlDALZ3dPxf2tvlkJF2Ff3dyZ8aIAAOHTokbW1t0nrwoLS2tsbKQfebCm2tcL6XAO4ZC5COAuLAgQOyf//+tHCMxIGLBWak3WpnoKkdvQAzdbym1ZPzAAGoffv2peV44MUB61BgRjp5huMEGfa72wAPuofXDmqn0KRctI1zgNXS0tJr8OKgZZOcrMXdq0t/I4jdArjPdbKpqSnd6S4ddRdOemP83hIDLhvA7sDrDrjDhw//QTozaBzPwnPxLPa+3CcngJ3uBlxgz5490tjY6CECw3ZaP1ttbHM3sxoXmq2FlwvAXOB1Bxpy5MgRL3Eg6Ys+m8IL753KVX2BZwWQzc3NXbSqxR0D9wAA3A35DVGft2vXrkR4PQWYDV4SOIXHffn7yy+/pL/jLxZF/3hOniVp0MoJIFB2794tDQ0N/m99fb3/azUS4fPevXvTGopwk+LiYnnkkUdkzpw5/jgOXjaA2bSvu/CQ3377Td555x156qmnZPv27f5YNZJrq5XFPQPHfJ/KxXQVGIIW1dTUSHV1tf8MVEACDlGtVHhr166Va665RkaOHCkLFizw36kpJwEMIfKwdEihaCdVegKP83799Vf/fJMnT5Zbb71VNm3a1AUi1+kyWEbg1C3xzKlsIyeAAIgovLKyMtm8ebNs3LhRahxIhWg1DwhAvummm2TEiBHy5JNP+oexwDJB5KHpwM8//+w1jBfDvSsqKqS0tNTLtm3bpK6uzl+Hdr///ruHkg2efQmY7osvviiXXnqp3H333V5Jjh071gWiwuP5YaDKQ38zAtzrTJKGyM6dO6W2ttarOib5008/yYoVK2T58uX+uzjte/3112X48OFy3XXX+c6qL8wEEFEzX7RokTz//PNy7733ypVXXinjxo2TUaNGyYUXXigXXXSRjB49WiZMmCBXXXWV3HffffLCCy/Ijz/+6M8HQi4AaYfruf/++2XSpEny9ttvd9FChBfIS+UFVlZW+v7yGdipJNOlAyG8HTt2SEV5uRQVFXmAa9askaVLl3qIXAyAdmC5/fbb5bLLLvNtMMGkkdgOKkDm+rfddpsMGjRIzj77bBk4cKCcd955MnjwYBkyZIiXCy64IC0cn3/++b49n7kvGnr06NGsABGAoRS33HKLB6mab7UQTa+qqvICQLQQLqk4eIygCo4TgccJ0OfBtm7d6s23sLBQVq1cKRs2bEiPyhbgF1984duoRuUivO2ZM2fKWWed5aEgSeCQoUOHehk2bFha+vfvL1OmTPFgcglh1B/Sv8WLF//BxyK4KRggQESZ0MJUXMiCNoXwoF7utK/EvaktW7Z4gOvXr/dayI11JLZmrCNVrvAQ2qOxmGu/fv1kwIABaQ20QC1Uq4G051yugQZ2JxbEH4bmi6CN6tMR4AGRz6kw6oZ0HDx8GNqHeVmA69at821tOGMhJs0+4sTGjdzrpZdekhtuuEEuvvjitDmjXYBF+Aww4OIPb7zxRnn55Zf9s+rgExfiZNPGOMEFKQ8AwgSIXQAyEADDwqNRpXsgr30lJd58GYHxgZgnEBmhOdfOUnhjFmImkGE7PV9jMTScAeurr76STz/9VD7++GP55JNP5LPPPpNvv/3WhyKYExqvAfHxxIkMLOoD7QwFxVImAETSAOk8DwE4jfM8PPfwwIvTPh6cvxpUaxDNNfieQSHUxmwS157rxMWCdFKlI8ondne6F8LD7AHDfUOAjAsKDy5IikGj2TUGGOAQtXEaaNzFKIX2EWwyaGC6q1at8n/RQAUIAEA//PDD/jgJShy4TGK1OJy1JCVZuzNzsaY8ffp0D0lHcW2DZSo83ARsUsz5rFNU+1azzQRv2bJlstKNwqi2nZHQ0ccee0zmzZvnO5INjhU7LbQ+NRzhLchsGeuk+XMIkZGY2HPq1Klp7UunvFx7DeQR2DChSDW6B+RAbVq1jh/xeXHwVq9e7X0SQeuSJUvSQaVCpJOAvfnmm/2b2h+lwXIBp/BCiRugwlRYpjxiNm3EDXDtBx980PcTP2jhci59gQuCYsHHA+SDkg3Bqc+z8AicCROImRYuXOjPswkGhA69+uqr8sADD6ShhhAttBCczq1VLMhM2hgHMhtE1bRp06bJW2+95TWxS/baCdeHiRVcVao1ivztlwoOrWO01QEDswUeWvfDDz94eN98841vh4MFomqhQnj00Ufl8ccf98d0NIQWwgvB2URFHMhwhM+mjSFENVWmjMzX+Y1jBaeQUQ4UCS7w8eI+pzrdBfB7aBggFBrHhCloHcEyJonPA55qHvAWOp+BCeMHQ4h0EsfL9Oihhx7y96FDCiA0UwstSXIBmZQaCzWRQYJz0DxeNNfSmC+UJncPtUTltMkd+1GYzDGxHeaJpiFA4xhwarJoHfC+//57D2+584MkHHgJOx08YAHR+kM6B1wekKQCL4DO8H02eFwjTkKQcWYd+karhQDBx9Hne+65R5544gl/bggvnftz4vMD7nponoZvwEyl837uJqin17JocEAYKFTjvvvuOx+4ApOBhwsfZrLtzseX6gRb/aHVRDrLLIGMB+bCgKUgk+BpDlLTaTYvmQlkkkkDg8GC8/B1V199tbzxxhseqg4UoajGKidSfDUuzkUbUbKUTSJoCovRBhVVv4cmYs7FbnABEKHPEfcgeo6uf5AbJIiOg0gn6QhhAjnCyy+/3HeCe+mshTYhOM0IWbEw9frqd0OQmh7Dr3HOBx984KeHd9xxh1cWzNhqmwWnc/lw+Ral0WWO2GwMcGik82M/1JvvLTh7XoO7IH7Om3IAUTuqabJ3333XawDZ4BkzZniwmhyl87RVgLwQFdroZ4VpQQIQcKpxvBSUgFzhtddeK9dff728//77aZMNqxssOF0LScqXwuKEViaghQDElLWjYScROoVm0A6NQBvGjh3rU//PPPOMfPTRR948CO45z5p46AutxvGZ+zIIMk+eNWuW17aCggK56667ZO7cuf56Cs4G3aHoUma24oETCtD7QtcJzdj+AaLxYRozoi3AIDB/5ZVXfEfp8CWXXCJXXHGF3HnnnfL000/739DaDz/8MJ1MAMh7770nr732mp89MCCg1ePHj/eJXI7JiuOKuE+HWeNNqr1R8cndDNrXq7UxtdGcUZMTFqT1YdbHAbHJwQcsIx0LUG+++aYfIYFISn/ixIkyZswYn7pC0Fq+4zfa0JZziBCYDPAygaVuIW6EjhP97ZQUF6GFmICuHVRHA4umyaw/s35NU2jaVsMhXchi1Gdg03m4JjL4jt84T7XaLr/aQSwcpePWYzS9lku5Sq9pIBAp5WCKB0T1i6qRoWgWqCbI+Nq0EaN1JtEXpql2jQb0RSjEpOBbP/NbLqbb6+VtQCQkYm5NB3UdQdPiVvheocWB0zm6TuCt8B2/0Ya2mim2mh8G940xAbjGqsTDfaY+UCHSScxMtUQ7aYHFaZtNGyk8na+rcMz3tKGtamMI0camXhuDObYmQDpiQrRTWmAJROaRCqAi6qR2tDIwxTDfFgdOJ/NxEDNpojXpdKlKBJWRt7Ob8E5ahapfKnUPuM0Bo+OlRmNC0XxbWVR9kATPikK05mx9YggxLe4YiH4q1wN4J7XElwckKEUDPAg372aJtDTyY1bSPk5zb2qyMfASAaKFkSmHg5iPUd1fLENnWadNjTSZGxw1HQMiUqxmGEmYuCw2Pq/Imq+BFw4oleoL0cIIooLEZA8eh9ad8iJzHlxDHTpY5CBu2bzZAyk2yd04kOHvHhwugYHK+EA14apIqh08/J2OsicC3imv0leQjH74o3LWnR1IxMNheQEJTLw08pP4TD/oMAAxIDGaazjkjnc4qXPmSthCcN8R3e+M2ydCp8hs4COpct1VWycly5bJxvnzZeuiRVK0dIkUr1guJatXS2nhOilbv17KN2zwUrG+UCrcXHcbJSYrV0jl4sVSU1goTS4saXUzi/bIx51ocH12p9Lho0elra5WSidPkKJhA6Vk1AgpGTNaisaNlS0TxsvmiRNkU4H762RrwQQpcXPh8oIC2T6pQGpcm7qRw6Xh7+OkvaJcOo8d+/Nt9ep0AA+WlUjV4P5Sc85fpObcflJ97rmyY+BAqXJ/qwYMkB0D+ku1k1r3eeegQVI/ZIjsGTpUGgcPluaB50jL3/4qhzYUSsefDaAPdSirpUbn3/+Ssin/kIppU6R82lQpmz5dyp1UzJghlbNmSuU/Z0nVs89K9exnpWb2bKl77jmpf26O7J4zW1r++x9pczOgjl4y2z7pA9X/1RPwVm6XXbsbpH5vo+x2IBqammWPm+g3skDvRtFm6pSptW5vlwPk+IDOJiAyQQh7WkhlRSV2Hb24Xy7VF+ARk/nUFWktlkjd33qmXOQJyUizMEWqnm0HZn9KK7XUumQZyAFSU649bdpi1jXOCICaOwQWwjoKM4Rd0TFx2x431dLqV9JOgGm1W81idm0qRA872udxsJcgpk4lPDrrM9NRltrn8KL0U73VPt0ZBcCExfI48at9DrxW/fcGxFMDMFpf1ZQ+msZE328fCCoc7MadsGwjad+waiG/6bnp9iysn0CIpwSgLSXWtL2uodh1EwXYHEHYF2lgHEQL0h5zDrk+a8pt3cg4971kAvnBqGZG1y2YepFE8Pm6DBqYqe4lk+AacAUHom0UunHwtAOoeUGbHQYki0NkWPguLFLaG7OxMdP+4lAAhXbzgrqYMv4wx4WjPgOQILk+2kLhtc+BIhnAfhJSTTbZmU6/Gy2MrXvJAlL9IDU9vBDd56z+8LQBqOkrNE7XhPm8Zu1amT9/vu9cUtlG3LJkCDJpnRdYBNJU+JM71B0AVkNPC4CajVbt0k17LKBTNqfmHK4fh2u7mYorkzYvApCKMirMOM/utvdprr4OUGvrajVIjrSPpCclGtTBaBxoJVxN00ElqS4wCeihqP7x888/TxfBd9HC4/CFJw0gnVeAWm1AcnTe3Lm+ukA3NOqaRa1ZhE+qxAorVeOA6vYxBhIAcj7tT5QWpk6W+dZFJRzejNG+qAYRDST77Es7tEIh2uijYmtswjgxrtDSaqfGjpz/5Zdf+mtxbnM0Q1HpacLhpAD0xZem3AIouk2MEdgDNDukbGmHru+GK2txBUuhdtptZ5zz9ddfpysltFZRfWV7Xwe4I+o8HWctg7prOkN4QWlxuJHPlnXoQpGtOrCrbCHUMAgHEOcwiLC+gj8Eug2L+jRAnLTdDUU4URhtUmQAYVUtLChKqofRpcv0glJQiaAvSUvmdNDge+oEAa3/KkBNHpA9Bfg/xTf44yGrdiQAAAAASUVORK5CYII=">
+                  <img src="data:image/png;base64,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">
+                </a>
+              </div>
+              <div class="user_show" clstag="h|keycount|head|login_01">
+                <a href="javascript:login(true);" class="user_tip">Hi~欢迎逛京东！</a>
+                <p>
+                  <a href="javascript:login()" class="user_login">登录</a>&nbsp;|&nbsp;<a href="javascript:regist()" class="user_reg">注册</a>
+                </p>
+              </div>
+            </div>
+            <div class="userprofit">
+              <a class="user_profit_lk" href="//xinren.jd.com/?channel=99" target="_blank" clstag="h|keycount|head|login_04">新人福利</a>
+              <a class="user_profit_lk user_profit_lk_plus" href="//plus.jd.com/index?flow_system=appicon&amp;flow_entrance=appicon3&amp;flow_channel=pc" target="_blank" clstag="h|keycount|head|login_03">PLUS会员</a>
+            </div>
+            <div class="user-forfit">
+
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="fs-news">
+          <div class="news">
+            <div class="news_hd" aria-label="京东快报">
+              <h5 class="news_tit">京东快报</h5>
+              <a href="//kuaibao.jd.com/?ids=796865,223347132,790737,789182" target="_blank" class="news-more" clstag="h|keycount||head|news_a">更多<i class="iconfont">&#xe6a6;</i>
+              </a>
+            </div>
+            <ul class="news_list">
+              <li class="news_item news_item__recommend">
+                <a href="//kuaibao.jd.com/article?id=796865" target="_blank" class="news_link" clstag="h|keycount|head|news_b01">
+                  <span class="news_tag">热议</span>纸尿裤多久更换一次才合适？</a>
+                </li>
+              <li class="news_item news_item__recommend"><a href="//kuaibao.jd.com/article?id=223347132" target="_blank" class="news_link" clstag="h|keycount|head|news_b02">
+                  <span class="news_tag">推荐</span>vivo Z5x评测：肆意畅玩的千元旗舰</a>
+              </li>
+              <li class="news_item news_item__recommend"><a href="//kuaibao.jd.com/article?id=790737" target="_blank" class="news_link" clstag="h|keycount|head|news_b03">
+                  <span class="news_tag">热门</span>冲奶粉不做这个动作，奶粉最贵都放浪费</a>
+              </li
+              <li class="news_item news_item__recommend"><a href="//kuaibao.jd.com/article?id=789182" target="_blank" class="news_link" clstag="h|keycount|head|news_b04">
+                  <span class="news_tag">推荐</span>票友圈装优雅不叫真优雅，想要表里如一得这样</a>                  
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service">
+          <div class="service_entry">
+            <ul class="service_list">
+              <li class="target-one service_item service_frame mod_tab_head_item">
+                  <a href="//chongzhi.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_01" aria-label="话费">
+                                                                                                                                      <i class="service_ico service_ico_huafei">
+                          <img class="service_ico_img" src="//m.360buyimg.com/babel/jfs/t1/30057/19/14881/720/5cbf064aE187b8361/eed6f6cbf1de3aaa.png">
+                          <img class="service_ico_img_hover" src="//m.360buyimg.com/babel/jfs/t1/45423/33/385/778/5cd4f265E442a9342/0aff0a42cece09ee.png">
+                      </i>
+                      <span class="service_txt">话费</span>
+                  </a>
+              </li>
+              <li class="service_item service_frame mod_tab_head_item">
+                  <a href="//jipiao.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_02" aria-label="机票">
+                                                                                                                                      <i class="service_ico service_ico_jipiao">
+                          <img class="service_ico_img" src="//m.360buyimg.com/babel/jfs/t1/36478/38/5384/2901/5cbf065aEb0c60a12/afb4399323fe3b76.png">
+                          <img class="service_ico_img_hover" src="//m.360buyimg.com/babel/jfs/t1/34261/15/10242/3120/5cd4f256E10257aba/8f3f63ae04ff19af.png">
+                      </i>
+                      <span class="service_txt">机票</span>
+                  </a>
+              </li>
+              <li class="service_item service_frame mod_tab_head_item">
+                  <a href="//hotel.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_03" aria-label="酒店">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <span class="service_corner">
+                                          <i class="service_corner_txt">省</i>
+                                          <i class="service_corner_ico"></i>
+                                      </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <i class="service_ico service_ico_jiudian">
+                          <img class="service_ico_img" src="//m.360buyimg.com/babel/jfs/t1/31069/34/14642/979/5cbf0665Ec7dc8223/5fee386254dd2ebc.png">
+                          <img class="service_ico_img_hover" src="//m.360buyimg.com/babel/jfs/t1/44601/19/915/1039/5cd4f1cfE2e46473c/b61f083872a7a1de.png">
+                      </i>
+                      <span class="service_txt">酒店</span>
+                  </a>
+              </li>
+              <li class="service_item service_frame service_frame2 mod_tab_head_item" data-row="2">
+                  <a href="//game.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_04" aria-label="游戏">
+                                                                                                                                      <i class="service_ico service_ico_youxi">
+                          <img class="service_ico_img" src="//m.360buyimg.com/babel/jfs/t1/32403/22/14829/3699/5cbf0674E04723693/caa83ce9b881cd24.png">
+                          <img class="service_ico_img_hover" src="//m.360buyimg.com/babel/jfs/t1/57520/8/375/4092/5cd4f1d8Ea1266047/1c590322ece537ba.png">
+                      </i>
+                      <span class="service_txt">游戏</span>
+                  </a>
+              </li>
+                                                                                                                                                                                                                                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://jiayouka.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_05" aria-label="加油卡">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/71890/14/9897/3048/5d7739ddE93eb94f8/f1f6dc5c207329f9.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/36002/35/9106/3311/5cd4f1bdE06ff07ed/9570fdd46ecd3a76.png">
+                              </i>
+                              <span class="service_txt">加油卡</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://train.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_06" aria-label="火车票">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/45761/32/10307/1581/5d7739e2Ece4b6671/0004c1b85fbf7bde.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/58891/36/278/1745/5cd4f1e0Ef4cc50a7/f12276b17e5dcf3b.png">
+                              </i>
+                              <span class="service_txt">火车票</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://z.jd.com/sceneIndex.html?from=jrscyn_20162" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_07" aria-label="众筹">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/51584/31/10221/1685/5d7739e7E1adb25cd/1d0957d7f2ae01a2.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/50929/1/374/1847/5cd4f1eaE5daf90db/cebbff76b25dc22e.png">
+                              </i>
+                              <span class="service_txt">众筹</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://licai.jd.com/?from=jrscyn_20161" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_08" aria-label="理财">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/52683/35/10394/3447/5d7739edE270aa7b3/d4d1151b09b5553b.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/47544/23/372/3943/5cd4f24eE92fbcf79/4b49b55af25a7bdf.png">
+                              </i>
+                              <span class="service_txt">理财</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://baitiao.jd.com/?from=jrscyn_20160" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_09" aria-label="白条">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/56296/3/10260/1443/5d7739f3E233abc53/e6976f3cb30c9a8a.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/39983/24/6834/1596/5cd4f247E8cf89f1e/b8a8418d5418f471.png">
+                              </i>
+                              <span class="service_txt">白条</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://movie.jd.com/index.html" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_10" aria-label="电影票">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/60778/37/9838/3066/5d7739faEd3b7dbb9/dd4d9ef7ce8fc169.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/41106/15/4551/3300/5cd4f1c7E507148c7/90a218f053e903d2.png">
+                              </i>
+                              <span class="service_txt">电影票</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://b.jd.com/" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_11" aria-label="企业购">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/40738/20/14562/826/5d773a01E09eb8121/d6f3909618c6307a.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/45316/3/388/884/5cd4f25eEea4c67ed/671f7c186c5e9b01.png">
+                              </i>
+                              <span class="service_txt">企业购</span>
+                          </a>
+                      </li>
+                                                                                                                  <li class="service_item service_noframe">
+                          <a href="https://o.jd.com/market/index.action" class="service_lk" target="_blank" clstag="h|keycount|head|shortcut_12" aria-label="礼品卡">
+                                                                          <i class="service_ico">
+                                  <!-- 常态 icon -->
+                                  <img class="service_ico_img" src="https://m.360buyimg.com/babel/jfs/t1/57014/6/10297/815/5d773a07Ec7a61fc9/97917a2daa34be0f.png">
+                                  <!-- hover 态 icon -->
+                                  <img class="service_ico_img_hover" src="https://m.360buyimg.com/babel/jfs/t1/55911/31/402/858/5cd4f23eE6f536460/5da079255c6dfabe.png">
+                              </i>
+                              <span class="service_txt">礼品卡</span>
+                          </a>
+                      </li>
+                                                                      </ul>
+        </div>
+
+        <div class="service_pop">
+          <div class="close"></div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    <script>
+      var menuData = [];
+      $.ajax({
+        url: "/data",
+        dataType: "json",
+        success: function (res) {
+        //   console.log(res.dataSource);
+          renderPage(res.dataSource);
+          menuData = res.dataSource;
+        },
+      });
+      
+      //渲染左侧商品区
+      function renderPage(data){
+          var menuStr = '';
+          data.forEach(function(ele){
+                menuStr += `<li>${ele.titles.map(function(title){
+                    return `<a href="${title.href}">${title.name}</a>`
+                }).join(' / ')}</li>`
+          })
+          $('#menu').html(menuStr);
+      }
+       //渲染左侧对应的区域-- 这里的数据就是单独的一行
+      function renderLeftShow(data) {
+        var tabs = $('<div class="tabs"></div>');
+        var subs = $('<div class="subs"></div>');
+        // console.log(data.tabs)
+        data.tabs.forEach(function(tab){
+            $(`<a href="${tab.href}" class="tabs_header">${tab.name}<i class="FS-iconfont">&#xe61e;</i></a>`).appendTo(tabs)
+        })
+        
+        data.subs.forEach(function(sub){
+            var oDl = $('<dl class="clearfix"></div>');
+            var oDt = $('<dt></dt>');
+            $(`<a hre="${sub.href}">${sub.category}</a>`).appendTo(oDt);
+            var oDd = $('<dd></dd>');
+            sub.items.map(function(item){
+                $(`<a href="${item.href}">${item.name}</a>`).appendTo(oDd);
+            }) 
+            oDl.append(oDt).append(oDd).appendTo(subs);        
+        })
+        $('#menu-content').empty().append(tabs).append(subs);
+        // console.log( $('#menu-content'))
+      }
+
+      //左侧鼠标移入时，和移出时左侧对应区发生的变化
+      $('#menu').on('mouseenter','li',function(){
+          var index = $(this).index();
+          // console.log(menuData[index])
+          renderLeftShow(menuData[index].content)
+          $('#menu-content').show()
+      }).on('mouseleave',function(){
+        $('#menu-content').hide()
+      })
+
+      // 中间轮播图
+      $(".slidercenter").swiper({
+        content: $(".itemcenter"),
+        width: 590,
+        height: 470,
+        type: "fade",
+        isAuto: true,
+        showSpots: true,
+        showChangeBtn: 'always',
+        autoChangeTime: 3000,
+        spotsPosition: "left",
+      });
+      // 右侧轮播图区域
+      $(".sliderright").swiper({
+        content: $(".itemright"),
+        width: 190,
+        height: 470,
+        type: "fade",
+        isAuto: true,
+        showSpots: false,
+        showChangeBtn: '',
+        autoChangeTime: 6000,
+        spotsPosition: "",
+      });
+      
+
+      //引入切换区域
+      // $('.service .service_outry').load('./change-fs4.html');
+
+        $(".service_frame").mouseenter(function () {
+          
+
+          if($(this).hasClass('service_frame2')){
+            if(!$(".service").hasClass("service_expend")){
+              $(".service").addClass("service_expend");
+              $(".service").addClass("service_expend2");
+            }
+
+            if($(".service").hasClass("service_expend") && !$(".service").hasClass("service_expend2"))
+             $(".service").removeClass('service_expend2');
+          }else{
+            $(".service").addClass("service_expend");
+          }
+         
+          $(this).addClass("service_active").siblings().removeClass("service_active");
+          
+          
+      });
+      $(".service_pop .close").click(function () {
+        $(".service").removeClass("service_expend service_expend2");
+        // $(".service").addClass("service_expend2");
+      });
+
+
+  
+    </script>
+  </body>
+</html>

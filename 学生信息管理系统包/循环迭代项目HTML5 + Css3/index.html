@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息系统</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="icon" href="./images/logo.ico">
+    <link rel="stylesheet" href="./js/turnpage.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <img src="./images/logo.png" alt="logo">
+        <span>D</span>
+        <span>u</span>
+        <span>Y</span>
+        <span>i</span>
+    </div> 
+
+    <!-- 左侧导航区 -->
+    <div class="nav">
+        <dl>
+            <dt>学生管理</dt>
+            <dd data-id="no1" class="no1 active">学生列表</dd>
+            <dd data-id="no2" class="no2">新增学生</dd>
+            <dd data-id="no3" class="no3">统计学生</dd>
+        </dl>
+    </div>
+    <!-- 内容区 -->
+    <div class="content">
+        <!-- 内容区1 -->
+        <div class="studentshow dis show" id="no1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        <th>年龄</th>
+                        <th>手机号</th>
+                        <th>地址</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="studnettablebody">
+                    <!-- <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        <th>年龄</th>
+                        <th>手机号</th>
+                        <th>地址</th>
+                        <th>
+                            <button class="edit">编辑</button>
+                            <button class="del">操作</button>
+                        </th>
+                    </tr> -->
+                </tbody>
+            </table>
+
+             <!-- 分页内容 -->
+             <div class="transferpage"></div>
+        </div>
+        <!-- 内容区2 -->
+        <div class="studentadd dis" id="no2">
+            <form id="addmsg">
+                    <div>
+                        <label for="nameadd">姓名：</label><input id="nameadd" type="text" name="name">
+                    </div>
+                    <div>
+                        <label for="emailadd">邮箱：</label><input id="emailadd" type="text" name="email">
+                    </div>
+                    <div>
+                        <label for="">性别：</label>
+                        <label for="maleadd" class="sex">男</label><input id="maleadd" type="radio" name="sex" value="0" checked>
+                        <label for="femaleadd" class="sex">女</label><input id="femaleadd" type="radio" name="sex" value="1">
+                    </div>
+                    <div>
+                        <label for="snoadd">学号：</label><input id="snoadd" type="text" name="sNo">
+                    </div>
+                    <div>
+                        <label for="birthadd">出生年份：</label><input id="birth" type="text" name="birth">
+                    </div>
+                    <div>
+                        <label for="phoneadd">手机号：</label><input id="phoneadd" type="text" name="phone">
+                    </div>
+                    <div>
+                        <label for="addressadd">住址：</label><input id="addressadd" type="text" name="address">
+                    </div>
+                    <div>
+                        <label for=""></label><input type="submit" id="assmsgbtn" class="submitbtn"><input type="reset" class="resetbtn"> 
+                    </div>
+               
+            </form>
+        </div>
+        <!-- 弹窗内容 -->
+        <div class="alert">  
+            <div class="alert-content">
+                <h3>编辑信息</h3>
+                <form id="editmsg">
+                    <div>
+                        <label for="nameadd">姓名：</label><input id="nameadd" type="text" name="name">
+                    </div>
+                    <div>
+                        <label for="emailadd">邮箱：</label><input id="emailadd" type="text" name="email">
+                    </div>
+                    <div>
+                        <label for="">性别：</label>
+                        <label for="maleadd" class="sex">男</label><input id="maleadd" type="radio" name="sex" value="0" checked>
+                        <label for="femaleadd" class="sex">女</label><input id="femaleadd" type="radio" name="sex" value="1">
+                    </div>
+                    <div>
+                        <label for="snoadd">学号：</label><input id="snoadd" type="text" name="sNo" readonly>
+                    </div>
+                    <div>
+                        <label for="birthadd">出生年份：</label><input id="birth" type="text" name="birth">
+                    </div>
+                    <div>
+                        <label for="phoneadd">手机号：</label><input id="phoneadd" type="text" name="phone">
+                    </div>
+                    <div>
+                        <label for="addressadd">住址：</label><input id="addressadd" type="text" name="address">
+                    </div>
+                    <div>
+                        <label for=""></label><input type="submit" id="submit" class="submitbtn" style="margin-left: 45px;">
+                    </div>
+               
+                </form>
+            </div>          
+            
+        </div>
+        <!-- 内容区3 -->
+        <div class="statistical_data dis" id="no3">
+            <div class="areaChart"></div>
+            <div class="sexChart"></div>
+        </div>
+        
+    </div>
+    
+
+    <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="./js/turnPage.js"></script>
+    <script src="/js/pie.js"></script>
+    <script src="./index.js"></script>
+    
+</body>
+</html>

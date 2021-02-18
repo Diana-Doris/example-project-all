@@ -1,0 +1,20 @@
+.turnpage-ul{
+    display: flex;
+}
+.turnpage-ul li{
+    list-style: none;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    cursor: pointer;
+}
+.turnpage-ul span{
+    padding-top: 8px;
+}
+.pagehide {
+    display: none;
+}
+.active{
+    background-color: #428bca;
+    color: #fff;
+}

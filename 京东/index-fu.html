@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./slide/swiper.css" />
+    <title>swiper</title>
+    <!-- <style>
+      .wrapper {
+        width: 500px;
+        height: 400px;
+        border: 1px solid #000;
+        margin: 150px auto;
+      }
+      .item {
+        width: 500px;
+        height: 400px;
+      }
+      .item.red {
+        background-color: red;
+      }
+      .item.blue{
+        background-color: blue;
+      }
+      .item.green {
+        background-color: green;
+      }
+    </style> -->
+  </head>
+  <body>
+    <!-- 
+      我们在写页面的时候，就不要再像之前一样把所有的东西都写在一个页面上面，未来维护上面不是很好（页面当中位置和效果的变化，你还需要全局的去找到这个位置）；
+      所以我们就可以进行一个模块化开发；
+      首先要写一下页面的布局（4大部分），然后每一个模块都各自单独写；在jquery中，有一个load方法可以引入文件||模块；
+      例如我想在轮播图区域插入一个结构，我们就可以在创建出来的这个区域html中，我们如何把创建出来的结构html引入到index.html中呢，
+      我们可以在首页这个index.html中的它的js里面可以去写（先选中这个轮播图区域，然后用load方法，load(htmlurl)）
+      如果我们在创建的结构里面想要写样式，我们可以通过style标签 || <link……>引入外部文件，但是引入外部文件的时候的你写的相对地址，不是并不是相对于你的创建的html，
+      而是相对于index.html的。原因是load方法的原理，因为它的底层只通过ajax去写的，它是把我们创建的内容放到了index.html的指定区域中
+     -->
+    <!-- <div class="wrapper">
+      <div class="item red">item1</div>
+      <div class="item blue">item2</div>
+      <div class="item green">item3</div>
+    </div> -->
+    <!--  -->
+    <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+    <script src="./slide/slide.js"></script>
+    <script>
+      // $(".wrapper").swiper({
+      //   content: $(".item"),
+      //   width: 500,
+      //   height: 400,
+      //   type: "animate",
+      //   isAuto: true,
+      //   showSpots: true,
+      //   showChangeBtn: "",
+      //   autoChangeTime: 3000,
+      //   spotsPosition: "center",
+      // });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./show.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="slidertop">
+            <input type="text">
+            <span sex="male">MALE</span>
+            <span sex="female">FEMALE</span>
+            <span>AGE--</span>
+            <span class="active" sex="all">ALL</span>
+        </div>
+        <div class="sliderbottom">
+            <ul class="ul-show">
+               
+            </ul>
+        </div>
+    </div>
+    <script src="./show.js"></script>    
+    <script src="./combine-filtertext-filtersex.js"></script>
+    <script src="./store.js"></script>
+    <script>
+
+var allPersonArr = [
+    {name: '陈佳欣', age: 18, sex: 'female', email: '111@163.com'},
+    {name: '陈庆铭', age: 5, sex: 'male', email: '222.@163.com'},
+    {name: '陈君烁', age: 1, sex: 'male', email: '333.@163.com'},
+    {name: '陈猛', age: 28, sex: 'male', email: '555.2163.com'},
+    {name: '陈俊娜', age: 26, sex: 'female', email: '666.@163.com'},
+    {name: '陈书怀', age: 50, sex:'male', email: '777.@163.com'},
+    {name: '蒋萍', age: 49, sex: 'female', email: '888.@163.com'}
+];
+var ul = document.getElementsByClassName('ul-show')[0];
+renderPage(allPersonArr);
+var lastsex = '';
+var Store = createStore({
+        text: '',
+        sex: 'all'
+});
+function upDate(){
+    renderPage(lasrFilter(allPersonArr));
+}
+upDate();
+
+Store.subscribe(upDate);//订阅update功能
+
+//功能  
+// 1.input
+var oallPersonArr = allPersonArr;
+var inp = document.getElementsByTagName('input')[0];
+inp.oninput = function(){
+    Store.dispatch({type: 'text', value: this.value});
+    lastsex = this.value;     
+    return lastsex;
+
+}
+// 3. sex选项卡
+var ospan = document.getElementsByClassName('slidertop')[0].getElementsByTagName('span');
+var male = ospan[0],
+    female = ospan[1],
+    all = ospan[3],
+    ageminus = ospan[2];
+
+male.onclick = function(){
+    // var sex = male.getAttribute('sex');
+    Store.dispatch({type: 'sex',value: this.getAttribute('sex')});
+    lastsex = this.getAttribute('sex');     
+    return lastsex;
+    change(0);  
+}
+female.onclick = function(){    
+    var sex = female.getAttribute('sex');
+    Store.dispatch({type: 'sex',value: this.getAttribute('sex')});
+    lastsex = this.getAttribute('sex');     
+    return lastsex;
+    change(1);
+}
+all.onclick = function(){  
+    // var sex = all.getAttribute('sex');
+    Store.dispatch({type: 'sex',value: this.getAttribute('sex')});
+    lastsex = this.getAttribute('sex');     
+    return lastsex;
+    change(3); 
+
+}
+
+//4. 年龄减减
+ageminus.onclick = function(){
+    renderPage(filterByage(filterBysex(lastsex, allPersonArr)));
+    change(2);
+}
+
+
+    </script>
+    
+</body>
+</html>

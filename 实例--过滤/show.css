@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.wrapper{
+    padding: 20px 10px;
+    margin: 100px auto 0px;
+    width: 450px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+/* 导航 */
+.wrapper .slidertop{
+    height: 40px;
+    display: inline-block;
+}
+.wrapper .slidertop input{
+    padding-left: 10px;
+    margin-right: 10px;
+    height: 20px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.wrapper .slidertop span{
+    padding: 2px 9px;
+    background: grey;
+    border-radius: 4px;
+    font-size: 14px;
+    color: blanchedalmond;
+    cursor: pointer;
+}
+.wrapper .slidertop .active{
+    background: #f40;
+}
+/* 内容 */
+.wrapper .sliderbottom{
+    width: 480px;
+}
+.wrapper .sliderbottom ul li{
+    padding: 5px 0;
+}
+.wrapper .sliderbottom ul li span{
+    color: rgb(0, 174, 255);
+    margin-right: 5px;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowflake</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      #snowflake {
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="snowflake"></canvas>
+
+    <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+    <script>
+      /** @type {HTMLCanvasElement} */
+      let canvas = document.querySelector("#snowflake");
+      let paintBrush = canvas.getContext("2d");
+
+      $("canvas").attr({
+        width: $(window).width(),
+        height: $(window).height(),
+      });
+      let liney = 20 * Math.sin((60 * Math.PI) / 180);
+      let linex = 20 * Math.sin((30 * Math.PI) / 180);
+
+      function snow() {
+        paintBrush.save();
+        paintBrush.beginPath();
+        paintBrush.translate(100, 100);
+        paintBrush.scale(1, 1);
+        paintBrush.strokeStyle = "#fff";
+        paintBrush.lineWidth = 4;
+        paintBrush.lineCap = "round";
+
+        paintBrush.moveTo(-20, 0);
+        paintBrush.lineTo(20, 0);
+
+        paintBrush.moveTo(-linex, -liney);
+        paintBrush.lineTo(linex, liney);
+
+        paintBrush.moveTo(-linex, liney);
+        paintBrush.lineTo(linex, -liney);
+
+        paintBrush.stroke();
+        paintBrush.restore();
+      }
+      // snow()
+
+      //存储雪花属性
+      function snowPaint(x, y, scale, rotate, speedx, speedy, dis) {
+        this.x = x;
+        this.y = y;
+        this.scale = scale;
+        this.rotate = rotate;
+        this.speedx = speedx;
+        this.speedy = speedy;
+        this.dis = dis;
+      }
+      //雪花构造
+      snowPaint.prototype.product = function () {
+        paintBrush.save();
+        paintBrush.beginPath();
+        paintBrush.translate(this.x, this.y);
+        paintBrush.scale(this.scale, this.scale);
+        paintBrush.rotate(this.rotate * Math.PI/180);
+        paintBrush.strokeStyle = "#fff";
+        paintBrush.lineWidth = 4;
+        paintBrush.lineCap = "round";
+
+        paintBrush.moveTo(-20, 0);
+        paintBrush.lineTo(20, 0);
+
+        paintBrush.moveTo(-linex, -liney);
+        paintBrush.lineTo(linex, liney);
+
+        paintBrush.moveTo(-linex, liney);
+        paintBrush.lineTo(linex, -liney);
+
+        paintBrush.stroke();
+        paintBrush.restore();
+      };
+      //   var snow = new snowPaint(100,100,1,0,0,0);
+      //   snow.product()
+
+      //雪花随机生成
+      let snowArr = [];
+      function init() {
+        var len = 66;
+        for (var i = 0; i < len; i++) {
+          let x = canvas.width * Math.random();
+          let scale = Math.random() + 0.5;
+          let rotate = Math.random() * 60;
+          let speedx = Math.random() + 1;
+          let speedy = Math.random() + 6;
+          let dis = Math.random() * 4 + 2;
+          (function (x, y, scale, rotate, speedx, speedy, dis) {
+            setTimeout(() => {
+              let snowdemo = new snowPaint(x, y, scale, rotate, speedx, speedy, dis);
+              snowdemo.product();
+
+              snowArr.push(snowdemo);
+
+            }, Math.random() * 3000);
+          })(x, 0, scale, rotate, speedx, speedy, dis);
+        }
+        falling()
+      }
+      init();
+      function falling(){
+         setInterval(() => {
+            paintBrush.clearRect(0,0,canvas.width,canvas.height);
+
+            for(var i = 0; i < snowArr.length; i++){
+                snowArr[i].x = (snowArr[i].x + snowArr[i].speedx) % canvas.width;
+                snowArr[i].y = (snowArr[i].y + snowArr[i].speedy) % canvas.height;
+                snowArr[i].rotate = (snowArr[i].rotate + snowArr[i].dis) % 60;
+
+                snowArr[i].product()
+            }
+         }, 30);
+      }
+
+    </script>
+  </body>
+</html>

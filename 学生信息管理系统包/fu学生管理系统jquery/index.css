@@ -1,0 +1,149 @@
+body, dl, dd{
+    padding:0;
+    margin: 0;
+}
+body, html{
+    height: 100%;
+}
+.active{
+    background-color: #ddd;
+    color: #354457;
+}
+.clear{
+    content: '';
+    display: none;
+    clear: both;
+}
+
+/* 头部 */
+.header{
+    height: 70px;
+    line-height: 70px;
+    background-color: #354457;
+}
+.header img{
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+.header span{
+    color: #b3bcc5;
+    font-size: 14px;
+}
+/* 左侧导航区 */
+.nav{
+    width: 200px;
+    background-color: #4d5e70;
+    float: left;
+    height: calc(100% - 70px);
+}
+.nav dl{
+    line-height: 40px;
+    font-size: 14px;
+    color: #b3bcc5;
+}
+.nav dl dt{
+    padding-left: 10px;
+}
+.nav dl dd{
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+/* 内容区 */
+.content{
+    float: left;
+    width: calc(100% - 200px);
+    background-color: #eee;
+    height: calc(100% - 70px);
+    position: relative;
+    overflow: scroll;
+}
+.content .dis {
+    position: absolute;
+    width: 100%;
+    display: none;
+}
+.content .dis.show{
+    display: block;
+}
+/* 内容区1 */
+.content .studentshow table{
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+}
+.content .studentshow table thead{
+    background-color: #e3e8ee;
+    color: #646987;
+}
+.content .studentshow table tbody{
+    background: #fff;
+}
+.content .studentshow table tbody .edit, .del{
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.content .studentshow table tbody .edit{
+    background-color: #5cb85c;;
+}
+.content .studentshow table tbody .del{
+    background-color: #d9534f;;
+}
+
+
+
+
+/* 内容区2 */
+.content .studentadd form{
+    width: 400px;
+    margin: 20px auto;
+}
+.content form div{
+    margin: 10px 0;
+}
+.content form div label:not(.sex){
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 10px;
+}
+.content form div .submitbtn, .resetbtn{
+    padding: 5px 27px;
+    margin-right: 8px;
+}
+/* 弹窗区域 */
+.content .alert{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.content .alert.showeditdata{
+    display: block;
+}
+.content .alert .alert-content{
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -200px;
+}
+.content .alert .alert-content h3{
+    padding-left: 30px;
+}
+.content .alert .alert-content #editmsg{
+    width: 400px;
+    margin: 20px auto;
+}

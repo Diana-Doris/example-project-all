@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 标签选择器 */
+        body{
+            background: black;
+        }
+        /* class类选择器 */
+        .parent{
+            width: 200px;
+            height: 200px;
+            /* 块元素水平居中margin */
+            margin: 200px auto;
+            /* 相对 */
+            position: relative;
+            /*3D属性：给父级添加完该属性后，子元素会有3D效果*/
+            transform-style: preserve-3d;
+            /* 转换transform:移动、旋转、缩放--旋转角度 */
+            transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0);
+            /* background: rgba(255,255,0,0.4); */
+            /* 2、调用动画 */
+            animation: dh 6s linear infinite;
+        }
+        /* 监听父级元素鼠标悬停 */
+        .parent:hover{
+            animation-play-state: paused;
+        }
+        /*后代选择器 父 子*/
+        .parent div{
+            width: 200px;
+            height: 200px;
+            color: white;
+            /* 绝对定位--子绝父相 */
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*字体大小*/
+            font-size: 100px;
+            /* 过渡效果--属性all指的是监听所有状态变化、ns指的是过渡时长 */
+            transition: all 1s;
+            /* 背景图大小 */
+            background-size: 100% 100%;
+            /* 透明度0-1 */
+            opacity: 0.5;
+        }
+        /*鼠标悬停时完全显示图片，控制opacity透明度为完全显示*/
+        .parent:hover div{
+            opacity: 1;
+        }
+        /* 上 */
+        .son1{
+            background-image: url('https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3256501074,2125932772&fm=11&gp=0.jpg');
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        /* 下 */
+        .son2{
+            background-image: url('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1831886359,378289772&fm=26&gp=0.jpg');
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        /* 左 */
+        .son3{
+            background-image: url('https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1449585280,3191934872&fm=26&gp=0.jpg');
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        /* 右 */
+        .son4{
+            background-image: url("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3415300232,3285306712&fm=26&gp=0.jpg");
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        /* 前 */
+        .son5{
+            background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1887718217,784378057&fm=26&gp=0.jpg");
+            transform: translateZ(100px);
+        }
+        /* 后 */
+        .son6{
+            transform: translateZ(-100px);
+            background-image: url("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3179581588,831858864&fm=26&gp=0.jpg");
+        }
+        /* 鼠标悬停--状态变化 */
+        .parent:hover .son1{
+            transform: rotateX(90deg) translateZ(180px);
+        }
+        .parent:hover .son2{
+            transform: rotateX(90deg) translateZ(-180px);
+        }
+        .parent:hover .son3{
+            transform: rotateY(-90deg) translateZ(180px);
+        }
+        .parent:hover .son4{
+            transform: rotateY(90deg) translateZ(180px);
+        }
+        .parent:hover .son5{
+            transform: translateZ(180px);
+        }
+        .parent:hover .son6{
+            transform: translateZ(-180px);
+        }
+        /* 1、定义动画 */
+        @keyframes dh{
+            from{transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0);}
+            to{transform: rotateX(-20deg) rotateY(360deg) rotateZ(0deg);}
+        }
+    </style>
+</head>
+<body>
+    <!-- 容器 -->
+    <div class="parent">
+        <!-- 立方体面拆分--div.son$*6 -->
+        <div class="son1"></div>
+        <div class="son2"></div>
+        <div class="son3"></div>
+        <div class="son4"></div>
+        <div class="son5"></div>
+        <div class="son6"></div>
+    </div>
+</body>
+</html>

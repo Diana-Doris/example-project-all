@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/search.css" />
+  </head>
+  <body>
+    <!-- input框是行块级元素，button也是行块元素，两个行块元素之间，如果有这个换行的话，它们中间就会有一个字符的制表符
+    我们如果不想要这个制表符的话，一种方法是给它们父级设置font-size：0； 然后自己的font-size再设置；
+    这时候包裹它们的div下边款消失了，因为被搜索框挡住了，涉及到行块元素垂直方向对齐的问题，它们默认的沿着基线对齐（文本x）
+    如果没有文本x的时候，会以外层盒子（margin值下），所以设置一个vehicle-align:top;
+    input框设置完事之后，我们要输入内容之后，进行网络请求，创建网络链接。步骤：
+        1.先给输入框绑定一个输入事件，input.val如果有内容的话，才可以进行ajax网络请求了。可以用淘宝的接口
+        2.这时候，我们输入val之后，会触发很多次请求，但我们还没有输入完事我们的关键字的时候它就已经触发了网络请求(异步请求)，
+        都是异步请求，都不知道哪个是返回给我的，所以这时候就要做防抖处理了，我们可以写一个定时器延迟触发，在设置的时间之内，用户重复触发，就不进行网络请求
+-->
+    <div class="search clearfix">
+      <div class="logo">
+        <a
+          id="J_logo_extend"
+          href="https://pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3"
+          target="_blank"
+          aria-label="大促LOGO位推广"
+          style="
+            display: block;
+            width: 190px;
+            height: 120px;
+            background: rgb(255, 255, 255);
+          "
+        >
+          <img
+            src="//img10.360buyimg.com/img/jfs/t1/124600/14/15671/184916/5f8d7112E7f52db74/60ee6ba8e8e5ce3a.gif"
+            style="display: block; height: 120px; margin: 0px auto; width: 100%"
+          />
+        </a>
+      </div>
+
+      <div class="shoppingcar">
+        <i class="H-inconfont">&#xe602;</i>
+        <a href=#"">我的购物车</a>
+        <i class="iconfont">&#xe608;</i>
+      </div>
+
+      <div class="in-content clearfix">
+        <input type="text" placeholder="衣服" id="in-search" />
+        <span class="H-inconfont">&#xe791;</span>
+        <button class="H-inconfont">&#xe606;</button>
+        <!-- <ul id="searchHeaper">
+          <li></li>
+          <li>衣服<span>数量</span></li>
+          <li>衣服<span>数量</span></li>
+        </ul> -->
+      </div>
+      
+      <div class="hotwords">
+        <!-- <a href="" class="red">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a>
+        <a href="">手机双十</a> -->
+      </div>
+
+      <div class="navitems clearfix">
+        <ul class="nav-group1 clearfix">
+          <!-- <li><a href="#" class="red">秒杀</a></li>
+          <li><a href="#" class="red">优惠券</a></li>
+          <li><a href="#">plus会员</a></li>
+          <li><a href="#">品牌闪购</a></li> -->
+        </ul>
+        <ul class="nav-group2 clearfix">
+          <!-- <li><a href="#">秒杀</a></li>
+          <li><a href="#">优惠券</a></li>
+          <li><a href="#">plus会员</a></li>
+          <li><a href="#">品牌闪购</a></li> -->
+        </ul>
+        <ul class="nav-group3 clearfix">
+          <!-- <li><a href="#">秒杀</a></li>
+          <li><a href="#">优惠券</a></li> -->
+        </ul>
+      </div>
+      <div class="treasure">
+        <a id="J_promo_lk" class="promo_lk" href="https://pro.jd.com/mall/active/7P8nSbxpPbTXJxvTSobyGWSjHAM/index.html?babelChannel=ttt3" target="_blank" clstag="h|keycount|head|adbtn_01" aria-label="推广位" style="background-image: url(&quot;https://m.360buyimg.com/babel/jfs/t1/122281/38/18270/137061/5fa96756Eef008ef3/ea9600a152c064a0.gif&quot;);"></a>
+      </div>
+    </div>
+    <script>
+      var Searchtimer = null;
+      $("#in-search")
+        .on("input", function () {
+            clearTimeout(Searchtimer)
+          var valText = $("#in-search").val();
+          
+          if (valText) {
+            Searchtimer = setTimeout(() => {
+              $.ajax({
+                url: "https://suggest.taobao.com/sug",
+                type: "get",
+                dataType: "jsonp",
+                data: {
+                  code: "utf-8",
+                  q: valText,
+                  callback: "dealData",
+                },
+              });
+            }, 500);            
+          }
+         
+        }).click(function(){
+            $(this).trigger('input')
+        })
+        $('.in-content').mouseleave(function(){
+            $(".in-content #searchHeaper").hide();
+        })
+        
+      // 渲染input框中点击时出来的辅助查找商品的信息
+      function dealData(res) {
+        var searchUl = $('<ul id="searchHeaper"></ul>');
+
+        res.result.forEach(function (ele) {
+          $(
+            `<li>${ele[0]}<span>约有${parseInt(ele[1])}个商品</span></li>`
+          ).appendTo(searchUl);
+        });
+        searchUl.appendTo($(".in-content")).show();
+      }
+
+      //   渲染热词
+      $.ajax({
+        url: "/dd",
+        dataType: "json",
+        success: function (res) {
+          // console.log(res);
+          renderHotWord(res);
+        },
+      });
+      function renderHotWord(res) {
+        // console.log(res);
+        res.data.forEach(function (ele) {
+          $(`<a href="${ele.href}" class="">${ele.name}</a>`).appendTo(
+            ".hotwords"
+          );
+          $(".hotwords a:first").addClass("red");
+        });
+      }
+      setInterval(() => {
+        $.ajax({
+          url: "/dds",
+          dataType: "json",
+          success: function (res) {
+            $(".hotwords a:first").text(res.name);
+          },
+        });
+      }, 6000);
+
+      // 导航京东
+      $.ajax({
+        url:'/kill',
+        dataType:'json',
+        success:function(res){
+          // console.log(res);
+          renderKillDom(res.data);
+        }
+      })
+      function renderKillDom(data){
+        // console.log(data)
+        var group1 = $('<ul class="nav-group1 clearfix"></ul>');
+        var group2 = $('<ul class="nav-group2 clearfix"></ul>');
+        var group3 = $('<ul class="nav-group3 clearfix"></ul>');
+        var index = 0;
+       for(var i = 0; i < data.length; i++){
+         if(i < 4){
+          $(`<li><a href="#">${data[i].name}</a></li>`).appendTo(group1);
+         }else if(i > 3 && i < 8){
+          $(`<li><a href="#">${data[i].name}</a></li>`).appendTo(group2)
+         }else{
+          $(`<li><a href="#">${data[i].name}</a></li>`).appendTo(group3)
+         }
+       }
+       $('.navitems').append(group1).append(group2).append(group3);
+       $('.nav-group1>li:lt(2)>a').addClass('red');
+        
+      }
+    </script>
+  </body>
+</html>

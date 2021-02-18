@@ -1,0 +1,134 @@
+.SC a {
+    color: #999;
+}
+
+.SC a.F00 {
+    color: #f10215;
+}
+
+.fl {
+    position: absolute;
+    left: 0;
+}
+
+.fr {
+    position: absolute;
+    right: 0;
+}
+
+ul.fl li,
+ul.fr li {
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    color: #999;
+    padding-right: 7px;
+    padding-left: 7px;
+    margin-left: -9px;
+}
+
+.fl li {
+    display: block;
+    width: 50px;
+    height: 30px;
+    overflow: hidden;
+    z-index: 1;
+    padding-left: 7px;
+}
+
+.fr li.space {
+    margin-top: 11px;
+    margin-left: 5px;
+    border-left: 1px solid;
+    height: 10px;
+}
+
+.fr li.dis {
+    margin-right: 8px;
+}
+
+.SC {
+    position: relative;
+}
+
+.SC .fl:hover {
+    background-color: #fff;
+    color: #f10215 !important;
+    border-bottom: transparent;
+}
+
+.SC .dropdown-layer {
+    position: absolute;
+    left: -10px;
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+    top: 30px;
+    border: 1px solid #eee;
+    border-top: transparent;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+    color: #999;
+    z-index: 10;
+    display: none;
+}
+
+.SC .dropdown-layer .areamini-content {
+    width: 300px;
+}
+.SC .dropdown-layer .areamini-content .area-items div.item{
+    float: left;
+    width: 60px;
+    padding: 2px 0;
+}
+.SC .dropdown-layer .areamini-content .area-items div.item>a{
+    float: left;
+    padding: 0 8px;
+    color: #999;
+    display: block;
+
+}
+.MY-JDcontent:hover{
+    background: #fff;
+}
+.MY-JD{
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 695px;
+    box-sizing: border-box;
+    width: 280px;
+    height: 100px;
+    color: #999;
+    border: 1px solid #ccc;
+    background: #fff;
+    box-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    border-top: transparent;
+    z-index: 10;
+}
+.myjdlist{
+    padding: 10px 0 10px 15px;
+    overflow: hidden;
+    color: #999;
+}
+.myjdlist .fore1{
+    float: left;
+    width: 126px;
+}
+.myjdlist .fore2{
+    float: left;
+    width: 126px;
+}
+.service_outry{
+    position: absolute;
+    width: 100%;
+    height: 206px;
+    background-color: #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    top: 232px;
+    background-color: red;
+}
+.target-change:hover .service_entry{
+    display: none;
+}

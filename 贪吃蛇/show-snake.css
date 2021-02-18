@@ -1,0 +1,63 @@
+.content{
+    width: 640px;
+    height: 640px;
+    margin: 100px auto;
+    position: relative;
+}
+.btn{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 2;
+}
+.btn button{
+    background: none;
+    border: none;
+    background-size: 100% 100%;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.startBtn button{
+    width: 200px;
+    height: 80px;
+    background-image: url(./images/startGame.png);
+    margin-left: -100px;
+    margin-top: -40px;
+}
+.pauseBtn{
+    display: none;
+}
+.pauseBtn button{
+    width: 70px;
+    height: 70px;
+    background-image: url(./images/start.png);
+    margin-top: -35px;
+    margin-left: -35px;
+}
+
+/* snakeWrap内容 */
+#snakeWrap{
+    width: 600px;
+    height: 600px;
+    background: #225675;
+    border: 20px solid #7dd9ff;
+    position: relative;
+}
+#snakeWrap .snakeHead{
+    background: url(./images/snake.png);
+    background-size: cover;
+}
+.snakeBody{
+    background: #9ddbb1;
+    border-radius: 50%;
+}
+.food{
+    background: url(./images/food.png);
+    background-size: cover;/*图片大小和容器一样大*/
+}

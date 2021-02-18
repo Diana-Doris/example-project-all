@@ -1,0 +1,85 @@
+body{
+    background-color: #333;
+    margin: 0;
+}
+.wrapper{
+    margin: 200px auto 0;
+    width: 420px;
+    border: 1px solid #444;
+    background: #2d2d2d;
+}
+/* 标题 */
+.wrapper .title{
+    padding: 20px 35px;
+    border-bottom: 1px solid #535353;
+}
+.wrapper .title .time1{
+    font-size: 40px;
+    color: #efefee;
+}
+.wrapper .title .time2{
+    font-size: 14px;
+    color: #999;
+}
+/* 显示头 */
+.wrapper .showtop{
+    padding: 20px 0;
+    color: #efefef;
+}
+.wrapper .showtop .control{
+    display: flex;
+    justify-content: space-between;/* 两端对齐 */
+    align-items: center;
+    height: 20px;
+    padding: 0 35px;
+}
+.wrapper .showtop .control div{
+    padding-right: 5px;
+}
+.wrapper .showtop .control div span{
+    font-size: 20px;
+    display: inline-block;
+    transform: scaleX(1.8);/* 张开的度 */
+    margin-left: 33px;
+    cursor: pointer;
+}
+/* 内容区 */
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.wrapper .content{
+    padding: 0 20px;
+    color: #efefef;
+}
+.wrapper .content .week{
+    display: flex;    
+}
+.wrapper .content .week span{
+    height: 40px;
+    flex: 1 1 auto;/* 水平均分 */
+    text-align: center;
+}
+.wrapper .content .date{
+    display: flex;
+    flex-wrap: wrap;/* 拆行，就是看内容区的包裹度去拆分 */
+}
+.wrapper .content .date li{
+    width: 54px;
+    height: 54px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;/* 竖直排列 */
+    justify-content: center;/* flex-direction已经改变了x的位置，x垂直居中 */
+}
+.wrapper .content .date li span:nth-child(2){/* 农历 */
+    font-size: 14px;
+}
+.wrapper .content .date li.color{
+    color: #6e6e6e;
+}
+.wrapper .content .date li.active{
+    background-color: #0078d7;
+}

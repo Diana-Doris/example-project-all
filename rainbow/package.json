@@ -1,0 +1,17 @@
+{
+  "name": "rainbow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rainbow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "LICHEN",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^6.4.17"
+  }
+}

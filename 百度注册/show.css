@@ -1,0 +1,249 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+body{
+    text-align: center;
+}
+
+.wrapper{
+    width: 980px;
+    margin: 0 auto;
+    text-align: none;
+}
+.wrapper .header{
+    height: 75px;
+}
+.wrapper .header .headerleft{
+    float: left;
+    height: 75px;
+}
+.wrapper .header .headerleft .logo{
+    width: 330px;
+    height: 76px;
+    position: relative;
+}
+.logo .logo1{
+    display: block;
+    height: 46px;
+    width: 137px;
+    margin-top: 15px;
+    background-image: url((https://passport.baidu.com/static/passpc-base/img/logo/baidu.gif);
+}
+.logo a::after{
+    border-left: 1px solid rgb(201, 201, 201);
+    font-size: 18px;
+    color: rgb(102, 102, 102);
+    content: "注册百度账号";
+    margin-left: 11px;
+    padding-left: 12px;
+    display: inline-block;
+    position: relative;
+    top: -25px;
+    left: 40px;
+}
+.headeright{
+    display: block;
+    margin-right: 5px;
+    padding-top: 10px;
+}
+.headeright .headerighttext{
+    float: right;
+    padding-top: 15px;
+    margin-right: 5px;
+    font-family: Arial, "宋体";
+}
+.headeright .headerighttext span{
+    width: 96px;
+    height: 16px;
+    font-size: 12px;
+    color: #666;
+}
+.headeright .headerighttext button{
+    margin-left: 5px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #666;
+    height: 32px;
+    width: 64px;
+    cursor: pointer;
+    text-align: center;
+    border: 0px solid black;
+    font-size: 12px;
+    background: url(https://passport.baidu.com/static/passpc-account/img/reg/reg_icons.png) no-repeat 0 -48px;
+}
+.line{
+    width: 100%;
+    height: 20px;
+    background: url(https://passport.baidu.com/static/passpc-account/img/reg/reg_hr.png) no-repeat center top;
+}
+.content{
+    width: 980px;
+    height: 432px;
+    margin: 0 auto;
+    text-align: center;
+}
+.down{
+    width: 980px;
+    height: 14px;
+    margin: 0 auto;
+    text-align: center;
+}
+.down div{
+    margin-bottom: 20px;
+    margin-top: 80px;
+    font-size: 12px;
+    font-family: Arial, "宋体";
+    color: #7a77c8;
+}
+.bla{
+    color: #666;
+    font-size: 12px;
+}
+.orange{
+    color: #f18300;
+    font-size: 14px;
+    font-weight: 600;
+}
+.contentr .contru{
+    width: 208px;
+    height: 50px;
+    padding-left: 30px;
+    margin: 0 10px;
+    border-bottom: 1px solid rgb(230, 237, 242);
+    color: #666;
+    background: url(https://passport.baidu.com/static/passpc-account/img/reg/phone.png) no-repeat left;
+    line-height: 50px;
+    font-size: 14px;
+}
+.contentr .contru h3{
+    display: block;
+    font-size: 14px;
+}
+.contentr{
+    width: 258px;
+    height: 208px;
+    border: 1px solid rgb(209, 238, 255);
+    margin-top: 40px;
+    float: right;
+    text-align: left;
+    font-family: Arial, "宋体";
+    background: #f5fcff;
+}
+.contentr .contrd{
+    width: 258px;
+    height: 109px;
+}
+.contentr .contrd #p1{
+    margin: 20px 10px 5px 10px;
+}
+#p2{
+    margin: 0px 10px;
+}
+#p3{
+    margin: 5px 10px 0px;
+}
+.contentl{
+    display: block;
+    float: left;
+    height: 432px;
+    width: 720px;
+    text-align: left;
+    margin-top: 40px;
+}
+.contentl .shuru span{
+    color: #666;
+    display: block;
+    cursor: default;/*默认光标箭头*/
+    font-size: 14px;
+    font-family: Arial,宋体;
+    font-weight: bold;
+    height: 42px;
+    line-height: 42px;
+    width: 65px;
+    margin-right: 10px;
+    text-align: right;
+}
+.contentl input{
+    margin-right: 10px;
+    padding: 11px 10px;
+    width: 328px;
+    height: 16px;
+    font-size: 14px;
+    border: 1px solid rgb(221,221,221);
+    float: left;
+}
+.contentl .shuru{
+    width: 720px;
+    height: 42px;
+    margin-bottom: 20px;
+    position: relative;
+    float: left;
+}
+.contentl .eeq{
+    position: relative;
+    left: 75px;
+    top: -40px;
+
+}
+.contentl .eeq div{
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    overflow: hidden;
+}
+#xieyi{
+    margin-left: 75px;
+    margin-bottom: 20px;
+    width: 645px;
+    height: 14px;
+    font-size: 12px;
+    display: block;
+    color: #666;
+    position: relative;
+    font-family: Arial, 宋体;
+}
+
+#xieyi input{
+    width: auto;
+    height: auto;
+    margin-right: 5px;
+}
+#xieyi span{
+    cursor: pointer;
+    color: #1b66c7;
+}
+.sumzc button{
+    width: 350px;
+    height: 50px;
+    background: #3f89ec;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    position: relative;
+    top: 35px;
+    left: -18px;
+
+}
+.sumzc button :hover{
+    cursor: pointer;
+    background: #3f89fa;
+}
+#chongfu, #chongfu1{
+    padding-left: 20px;
+    height: 16px;
+    width: 250px;
+    line-height: 14px;
+    position: relative;
+    float: left;
+    color: #fc4343;
+    background: url(https://passport.baidu.com/static/passpc-account/img/reg/err_small.png) 0 0 no-repeat;
+}
+#chenggong, #chengong1{
+    float: left;
+    height: 16px;
+    padding-left: 20px;
+    line-height: 12px;
+    background: url(https://passport.baidu.com/static/passpc-account/img/reg/reg_icons.png) -80px 0px no-repeat; 
+}

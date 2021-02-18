@@ -1,0 +1,247 @@
+.search {
+    width: 1190px;
+    height: 139px;
+    position: relative;
+}
+
+.logo {
+    top: 10px;
+    width: 190px;
+    height: 120px;
+    background-color: #fff;
+    position: absolute;
+    top: calc(50% - 60px);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.search .in-content {
+    position: absolute;
+    left: 260px;
+    top: 25px;
+    width: 550px;
+    height: 36px;
+    border: 2px solid #e2231a;
+    background: #fff;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+.search .in-content>input {
+    left: 0;
+    padding: 2px 44px 2px 17px;
+    width: 425px;
+    height: 26px;
+    border: 1px solid transparent;
+    line-height: 26px;
+    font-size: 12px;
+    color: #333;
+    outline: none;
+    vertical-align: top;
+    float: left;
+    ;
+}
+
+.search .in-content>button {
+    width: 58px;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    background-color: #e1251b;
+    transition: background-color 2s ease;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    color: #fff;
+    float: right;
+    /* position: absolute; */
+}
+
+.search .in-content>button:hover {
+    background-color: #9b0b04;
+    ;
+}
+
+.search .in-content>span {
+    position: absolute;
+    display: block;
+    font-size: 20px;
+    color: #e2231a;
+    left: 458px;
+    top: calc(50% - 10px);
+}
+
+#searchHeaper {
+    left: 0;
+    top: 35px;
+    width: 488px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .2);
+    font-size: 12px;
+    color: #666;
+    display: none;
+}
+
+#searchHeaper li {
+    overflow: hidden;
+    padding: 1px 6px;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+#searchHeaper li span {
+    overflow: hidden;
+    color: #aaa;
+    display: block;
+    width: 286px;
+    height: 24px;
+    line-height: 24px;
+    float: right;
+    text-align: right;
+}
+
+.search .hotwords {
+    overflow: hidden;
+    position: absolute;
+    left: 260px;
+    top: 65px;
+    width: 550px;
+    height: 20px;
+    /* line-height: 20px; */
+}
+
+.search .hotwords>a.red {
+    color: #e1251b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search .hotwords>a {
+    float: left;
+    margin-right: 10px;
+    width: 60px;
+    height: 20px;
+    display: block;
+}
+
+.search .shoppingcar {
+    position: absolute;
+    left: 828px;
+    top: 25px;
+    width: 130px;
+    height: 34px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 34px;
+    border-color: #eee;
+    border: 1px solid #e3e4e5;
+    overflow: hidden;
+    text-align: center;
+    color: #e1251b;
+}
+
+.search .shoppingcar .H-inconfont {
+    margin-right: 13px;
+    font-size: 20px;
+    line-height: 34px;
+}
+
+.search .shoppingcar>.iconfont {
+    position: absolute;
+    top: 4px;
+    left: 25px;
+    right: auto;
+    display: inline-block;
+    padding: 1px 3px;
+    transform: scale(.5);
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center;
+}
+
+.search .shoppingcar>a {
+    color: #e1251b;
+}
+
+.search .shoppingcar:hover {
+    border-color: #e1251b;
+}
+
+.search .navitems {
+    overflow: hidden;
+    position: absolute;
+    left: 203px;
+    bottom: 0;
+    width: 761.73px;
+    height: 40px;
+    padding-top: 20px;
+    color: #333;
+}
+
+.search .navitems .nav-group1,
+.nav-group2,
+.nav-group3 {
+    float: left;
+}
+
+.search .navitems .nav-group1>li,
+.search .navitems .nav-group2>li,
+.search .navitems .nav-group3>li {
+    float: left;
+    margin-left: 1px;
+    height: 40px;
+    cursor: pointer;
+    color: #333;
+}
+
+.search .navitems .nav-group1>li>a,
+.search .navitems .nav-group2>li>a,
+.search .navitems .nav-group3>li>a {
+    position: relative;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: #333;
+    margin: 0 11px;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    margin: auto 11px;
+    font-size: 15px;
+}
+
+.search .navitems .nav-group1>li>a.red {
+    font-weight: 700;
+    color: #e1251b;
+}
+
+.search .treasure {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 190px;
+    height: 120px;
+    /* background: red; */
+}
+
+.search .treasure .promo_lk {
+    background-image: url("https://m.360buyimg.com/babel/jfs/t1/122281/38/18270/137061/5fa96756Eef008ef3/ea9600a152c064a0.gif");
+    background-size: 100%;
+    position: relative;
+    display: block;
+    width: 190px;
+    height: 120px;
+    z-index: 3;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}

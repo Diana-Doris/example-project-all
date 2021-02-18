@@ -1,0 +1,36 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-02 01:00:41
+ * @LastEditTime: 2020-12-02 01:06:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \snowflake\合成属性.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.querySelector('#canvas');
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.fillStyle = 'red';
+        context.fillRect(100,100,200,200)
+
+        context.globalCompositeOperation = 'lighter'
+
+        context.beginPath();
+        context.fillStyle = 'green';
+        context.arc(300,300,100,0,Math.PI * 2);
+
+        context.fill()
+    </script>
+    
+</body>
+</html>

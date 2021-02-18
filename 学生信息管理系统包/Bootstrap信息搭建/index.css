@@ -1,0 +1,32 @@
+.leftContent{
+    width: 200px;
+    height: 100vh;
+    background: #4d5e70;
+}
+.leftContent .logo{
+    height: 70px;
+    background: #354457;
+}
+.leftContent .logo img{
+    width: 30px;
+}
+.leftContent .info{
+    font-size: 15px;
+    color: #aab1b7;
+}
+.account{
+    color: #828e9a;
+    font-weight: bold;
+    padding: 1rem;
+    margin-bottom: .5rem;
+}
+.nav-item.active{
+    background-color: #3d4e60;
+}
+.nav.flex-column a{
+    color: #fff;
+    font-size: 14px;
+}
+.rightContent{
+    background: #eff3f6;
+}

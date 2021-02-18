@@ -1,0 +1,105 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-13 14:14:38
+ * @LastEditTime: 2020-10-16 19:48:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \学生信息管理系统\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./show.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header clear">
+        <img src="./img/logo.png" alt="渡一logo">
+        <span>渡一教育</span>
+    </div>
+    <!-- 左侧导航区 -->
+    <div class="nav">
+        <dl>
+            <dt>学生管理</dt>
+            <dd class="active" data-id="0" id="page1">学生列表</dd>
+            <dd data-id="1" id="page2">新增学生</dd>
+        </dl>
+
+    </div>
+    <!-- 右侧内容区 -->
+    <div class="content">
+        <div class="show-student dis showcontent" id="0">
+			<table>
+				<thead>
+					<tr>
+						<th>学号</th>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>邮箱</th>
+						<th>年龄</th>
+						<th>手机号</th>
+						<th>住址</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="studentbody">
+					<!-- <tr>
+						<th>172810158</th>
+						<th>陈佳欣</th>
+						<th>女</th>
+						<th>22591358@qq.com</th>
+						<th>21</th>
+						<th>12345678900</th>
+						<th>中国</th>
+						<th><button class="edit">编辑</button><button class="del">删除</button></th>
+					</tr> -->
+				</tbody>
+			</table>
+        </div>
+
+        <div class="add-student dis" id="1">
+        	<form id="student-add-form">
+                <div><label for="add-name">姓名：</label><input type="text" id="add-name" name="name"></div>
+                <div><label for="">性别：</label>
+                    <input type="radio" name="sex" id="add-male" value="0" checked name="sex">
+                    <label class="sex" for="add-male">男</label>
+                    <input type="radio" name="sex" id="add-female" value="1" name="sex">
+                    <label class="sex" for="add-female">女</label>
+                </div>
+                <div><label for="add-email">邮箱：</label><input type="text" id="add-email" name="email"></div>
+                <div><label for="add-number">学号：</label><input type="text" id="add-number" name="sNo"></div>
+                <div><label for="add-birth">出生年日：</label><input type="text" id="add-birth" name="birth"></div>
+                <div><label for="add-phone">手机号：</label><input type="text" id="add-phone" name="phone"></div>
+                <div><label for="add-address">住址：</label><input type="text" id="add-address" name="address"></div>
+                <div><label for=""></label><input type="submit" class="btn" id="submitbtn">  <input type="reset" class="btn" id="resetbtn"></div>
+            </form>
+        </div>
+        <!-- 弹窗内容 -->
+        <div class="dialog showshow">
+            <div class="content-dialog clear showshow">
+                <h3>编辑一下~</h3>
+                <form id="student-edit-form" class="editform">
+                    <div><label for="add-name">姓名：</label><input type="text" id="add-name" name="name"></div>
+                    <div><label for="">性别：</label>
+                        <input type="radio" name="sex" id="add-male" value="0" checked name="sex">
+                        <label class="sex" for="add-male">男</label>
+                        <input type="radio" name="sex" id="add-female" value="1" name="sex">
+                        <label class="sex" for="add-female">女</label>
+                    </div>
+                    <div><label for="add-email">邮箱：</label><input type="text" id="add-email" name="email"></div>
+                    <div><label for="add-number">学号：</label><input type="text" id="add-number" name="sNo"></div>
+                    <div><label for="add-birth">出生年日：</label><input type="text" id="add-birth" name="birth"></div>
+                    <div><label for="add-phone">手机号：</label><input type="text" id="add-phone" name="phone"></div>
+                    <div><label for="add-address">住址：</label><input type="text" id="add-address" name="address"></div>
+                    <div><label for=""></label><input type="submit" class="btn editBtn" id="submitbtn"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./show.js"></script>
+</body>
+</html>

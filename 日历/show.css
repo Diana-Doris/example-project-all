@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.wrapper{
+    overflow: hidden;
+    margin: 100px auto 0 auto;
+    width: 1000px;
+    border: 1px solid black;
+}
+.wrapper .nowTime{
+    float: left;
+    width: 400px;
+    /* height: 300px;
+    background: mediumvioletred; */
+}
+.wrapper .nextTime{
+    float: right;
+    width: 400px;
+    /* height: 300px;
+    background: green; */
+}
+.wrapper .title{
+    font-size: 18px;
+    font-weight: 900px;
+    color: #fff;
+    background: deepskyblue;
+    overflow: hidden;
+}
+.wrapper .title div{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.wrapper .title .left{
+    width: 50px;
+    float: left;
+    cursor: pointer;
+}
+.wrapper .title .left:hover{
+    color: #000;
+}
+.wrapper .title .right{
+    width: 50px;
+    float: right;
+    cursor: pointer;
+}
+.wrapper .title .right:hover{
+    color: #000;
+}
+.wrapper table{
+    width: 400px;
+    text-align: center;
+    border-collapse: collapse;
+    color: gray;
+}
+.wrapper table th{
+    border: 1px solid lightslategray;
+    height: 40px;
+}
+.wrapper table td{
+    border: 1px solid grey;
+    height: 40px;
+}
+.wrapper .red{
+    color: red;
+}
+.wrapper .blue{
+    color: blue;
+}

@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.Wrap{
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Wrap ul{
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Wrap ul li{
+    list-style-type: none;    
+    width: 16%;
+    height: 100%;
+    background-color: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    /* li父级去掉了id之后li标签上的width和height的变化 */
+    transition: width .5s linear, height .5s linear;
+}
+
+.Wrap ul li .inner{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    transition: .5s linear;
+}
+/* 图片上升特效方法 */
+.Wrap .up .inner{
+    transform: translateY(100%);
+}
+.Wrap li:nth-child(1) .inner{
+    transition-delay: .1s;
+}
+.Wrap li:nth-child(2) .inner{
+    transition-delay: .2s;
+}
+.Wrap li:nth-child(3) .inner{
+    transition-delay: .3s;
+}
+.Wrap li:nth-child(4) .inner{
+    transition-delay: .4s;
+}
+.Wrap li:nth-child(5) .inner{
+    transition-delay: .5s;
+}
+.Wrap li:nth-child(6) .inner{
+    transition-delay: .6s;
+}
+
+.Wrap ul li .inner .img{
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: .5;
+    transition: .2s linear;
+}
+/* 移动到每一个li的区域的时候，img的opacity变化 */
+.Wrap ul li:hover .img {
+    opacity: 1;
+}
+.Wrap ul li:nth-child(1) .inner .img{
+    background-image: url(./images/1.jpg);
+}
+.Wrap ul li:nth-child(2) .inner .img{
+    background-image: url(./images/2.jpg);
+}
+.Wrap ul li:nth-child(3) .inner .img{
+    background-image: url(./images/3.jpg);
+}
+.Wrap ul li:nth-child(4) .inner .img{
+    background-image: url(./images/4.jpg);
+}
+.Wrap ul li:nth-child(5) .inner .img{
+    background-image: url(./images/5.jpg);
+}
+.Wrap ul li:nth-child(6) .inner .img{
+    background-image: url(./images/6.jpg);
+} 
+.Wrap ul li h2{
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: opacity .5s linear;
+}
+/* 鼠标移入字体的变化 */
+.Wrap ul li:hover .inner h2{
+    font-size: 25px;
+}
+
+/* 添加一个父级之后，隐藏h2 */
+#wrapper li .inner h2{
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+/* 设置li中除了有.active的classname之外的兄弟节点的宽高为0 */
+#wrapper li:not(.active){
+    height: 0;
+    width: 0;
+}/* 检测li标签中的变化 */
+#wrapper li{
+    transition: height .5s linear, width .5s linear .5s;
+}
+#wrapper li.active{
+    width: 100%;
+}
+
+/* 添加父级id之后让这个div的的opacity为1 */
+#wrapper li .direction{
+    opacity: 1;
+    transition: .5s linear 1s;
+}/* 让它的样式进行旋转变化 */
+#wrapper li .direction .close{
+    transform: rotate(360deg);
+    transition: .5s linear 1s;
+}
+
+.Wrap li .inner .direction{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 50px;
+
+    opacity: 0;
+}
+.Wrap li .inner .direction .header{
+    color: #fff;
+    font-size: 24px;
+}
+.Wrap li .inner .direction .close{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+}
+.Wrap li .inner .direction .close::after,
+.Wrap li .inner .direction .close::before{
+    content: '';
+    width: 30px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    background: #fff;
+}
+.Wrap li .inner .direction .close::after{
+    transform: rotate(45deg);
+}
+.Wrap li .inner .direction .close::before{
+    transform: rotate(-45deg);
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas{
+            border: 1px solid #000;
+        }
+        img{
+            border: 1px solid #f40;
+        }
+        #box{
+            width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <!-- <canvas id="drawing" width="300" height="300"></canvas>
+    <img> -->
+    
+    <script>        
+        /** @type {HTMLCanvasElement} */
+        // let canvas = document.querySelector('#drawing');
+        // let context = canvas.getContext('2d');
+
+        // let img = new Image();
+        // img.src = './self.jpg';
+        // img.onload = function(){
+        //     // 1.画图
+        //     context.drawImage(img, 100, 100, 200, 200, 0, 0, 200,200)
+        //     // 2.获取路径
+        //     let getImg = canvas.toDataURL();
+        //     let img_url = document.querySelector('img');
+        //     img_url.src = getImg; 
+
+        //     // 3.操作像素
+        //     let getPx = context.getImageData(0, 0, 100, 100);
+        //     context.putImageData(getPx, 50, 150)            
+        // }
+
+
+    </script>
+    
+    <script src="./js/gaussBlur.js"></script>
+    <script>
+        let blur_img = new Image();
+        blur_img.src = '/self.jpg';
+        blur_img.onload = function(){
+            window.player.controlBlur(blur_img, document.querySelector('#box'))
+        }
+    </script>
+</body>
+</html>

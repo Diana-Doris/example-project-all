@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./show.css">
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="sliderPage">
+            <li><img src="./img/1.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/6.jpg" alt=""></li>
+            <li><img src="./img/1.jpg" alt=""></li>
+        </ul>
+
+        <div class="btn left">&lt;</div>
+        <div class="btn right">&gt;</div>
+
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+function getStyle (obj, attr) {
+    if (obj.currentStyle) {
+        return obj.currentStyle[attr];
+    }else {
+        return window.getComputedStyle(obj, false)[attr];
+    }
+}
+        
+function startMove (obj, data, func) {         
+    clearInterval(obj.timer);
+    var iSpeed;
+    var iCur;
+    var name;            
+    startTimer = obj.timer = setInterval(function () {
+        var bStop = true;
+        for (var attr in data) {
+            if (attr === 'opacity') {
+                name = attr;
+                iCur = parseFloat(getStyle(obj, attr)) * 100;
+            }else {
+                iCur = parseInt(getStyle(obj, attr));
+            }
+            iSpeed = ( data[attr] - iCur) / 8;
+
+            if (iSpeed > 0) {
+                iSpeed = Math.ceil(iSpeed);
+            }else {
+                iSpeed = Math.floor(iSpeed);
+            }
+
+            if (attr === 'opacity') {
+                obj.style.opacity = ( iCur + iSpeed ) / 100; 
+            }else {
+                obj.style[attr] = iCur + iSpeed + 'px';
+            }
+            if ( Math.floor(Math.abs(data[attr] - iCur)) != 0 ) {
+                bStop = false;
+            }
+        }
+        if (bStop) {					
+            clearInterval(obj.timer);
+            if (name === 'opacity') {
+                obj.style.opacity = data[name] / 100;
+            }
+            func();
+        }
+    },30);
+}  
+
+var timer = null;
+var sliderPage = document.getElementsByClassName('sliderPage')[0],
+    Width = sliderPage.children[0].offsetWidth,
+    num = sliderPage.children.length - 1,
+    rightBtn = document.getElementsByClassName('right')[0],
+    leftBtn = document.getElementsByClassName('left')[0],
+    spanArr = document.getElementsByClassName('sliderIndex')[0].getElementsByTagName('span'),
+    lock = true,
+    index = 0;
+
+//left->right  从左边到右边
+//right->left  从右边到左边
+    rightBtn.onclick = function(){
+        automove('left->right')
+    }
+    leftBtn.onclick = function(){
+        automove('right->left');
+    }
+
+    // 圆圈滑动
+    for(var i = 0; i < spanArr.length; i++){
+        (function(myIndex){
+            spanArr[i].onclick = function(){
+                lock = false;
+                clearTimeout(timer);
+                index = myIndex;
+                
+                changeIndex(index);
+                startMove(sliderPage, {left: - index * Width}, function(){
+                    lock = true;
+                    timer = setTimeout(automove, 1500);
+                })
+            }
+        })(i);
+    }
+
+    function automove(direction){
+        if(lock){
+            lock = false;
+            clearInterval(timer);
+        //左键
+        if(!direction || direction == 'left->right'){
+            index ++;            
+            changeIndex(index);
+            startMove(sliderPage, {left: sliderPage.offsetLeft - Width}, function(){
+            if(sliderPage.offsetLeft == - num * Width){
+                index = 0;
+                sliderPage.style.left = 0 + 'px';
+            }
+            timer = setTimeout(automove, 1500);
+            lock = true;
+            })
+        //右键
+        }else if(direction == 'right->left'){
+            if(sliderPage.offsetLeft == 0){
+                index = num;
+                sliderPage.style.left = - num * Width + 'px';
+            }
+            index --;
+            
+            changeIndex(index);
+            startMove(sliderPage, {left: sliderPage.offsetLeft + Width}, function(){
+                timer = setTimeout(automove, 1500);
+                lock = true;
+            })
+        }
+        }
+    }
+
+    function changeIndex(_index){
+        for(var i = 0; i < spanArr.length; i++){
+            spanArr[i].className = '';
+        }
+        spanArr[_index].className = 'active';
+    }
+
+
+
+
+    // timer = setTimeout(function(){
+    //     startMove(sliderPage, {left: sliderPage.offsetLeft - Width}, function(){
+    //         if(sliderPage.offsetLeft == - num * Width){
+    //             sliderPage.style.left = 0 + 'px';
+    //         }
+    //     })
+    // },1500)
+
+    </script>
+    
+</body>
+</html>

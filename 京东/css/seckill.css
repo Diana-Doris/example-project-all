@@ -1,0 +1,332 @@
+.JD-kill {
+    width: 1190px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    position: relative;
+    height: 260px;
+}
+
+.JD-kill .seckill-countdown {
+    position: relative;
+    float: left;
+    width: 190px;
+    height: 100%;
+    color: #fff;
+    background-color: #e83632;
+    background-image: url(//misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/img/4a15d8883775742e3efbb850ae14def7.png);
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.JD-kill .seckill-countdown .countdown-title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 31px;
+    color: #fff !important;
+}
+
+.seckill-countdown .countdown-desc {
+    margin-top: 90px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+}
+
+.seckill-countdown .countdown-desc strong {
+    font-size: 18px;
+    padding-right: 2px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -1px;
+}
+
+.countdown-main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 130px;
+    height: 30px;
+    margin-top: 10px;
+    display: block;
+    color: #333;
+    font-weight: 700;
+}
+.seckill-countdown .countdown-main .timmer__unit {
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 20px;
+    color: white;
+    font-size: 20px;
+}
+.timmer__unit1 {
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #2f3430;
+    margin-right: 20px;
+    color: white;
+    font-size: 20px;
+}
+.seckill-countdown .countdown-main .timmer__unit:after {
+    content: ":";
+    display: block;
+    position: absolute;
+    right: -20px;
+    font-weight: bolder;
+    font-size: 18px;
+    width: 20px;
+    height: 100%;
+    top: 0;
+}
+.timmer__unit1::after{
+    content: "";
+    display: block;
+    position: absolute;
+    right: -20px;
+    font-weight: bolder;
+    font-size: 18px;
+    width: 20px;
+    height: 100%;
+    top: 0;
+}
+.seckill-countdown .countdown-main .timmer__unit--second {
+    margin-right: 0;
+}
+
+
+.slider-wrap {
+    width: 800px;
+    overflow: hidden;
+    position: relative;
+}
+
+.JD-kill .slider-list {
+    position: relative;
+    float: left;
+    width: 800px;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.JD-kill .slider-list .slider-list-items {
+    width: 200px;
+    height: 260px;
+    float: left;
+    background: #fff;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-link {
+    width: 200px;
+    height: 260px;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__image {
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    opacity: 1;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__image:hover {
+    opacity: .75;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__image .seckill-item__image img {
+    border: 0;
+    vertical-align: middle;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    -webkit-transition: color .2s ease;
+    transition: color .2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 13px;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__price {
+    box-sizing: border-box;
+    line-height: 24px;
+    overflow: hidden;
+    background-color: #e1251b;
+    border: 1px solid #e1251b;
+    position: relative;
+    width: 160px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__price .price-miaosha {
+    width: 92px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    float: left;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__price .price-miaosha i {
+    font-size: 12px;
+    font-weight: 400;
+    padding-right: 2px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__price .price-miaosha>span {
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.JD-kill .slider-list .slider-list-items .seckill-item__price .price-origin {
+    height: 100%;
+    width: 66px;
+    float: right;
+    background: #fff;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 22px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: line-through;
+    vertical-align: top;
+}
+
+.slider-two {
+    width: 180px;
+    position: absolute;
+    top: 0;
+    left: 1000px;
+    height: 240px;
+}
+
+.list-items {
+    width: 180px;
+    float: left;
+    height: 240px;
+}
+
+.list-slider-one {
+    width: 180px;
+    float: left;
+    height: 240px;
+    background-color: #fff;
+}
+
+.list-items .slider-linker {
+    cursor: pointer;
+    position: relative;
+    height: 240px;
+    width: 180px;
+}
+
+.list-items .slider-linker {
+    cursor: pointer;
+}
+
+.list-items .slider-linker .item-image {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto 0px;
+}
+
+.list-items .slider-linker .item-image .layzing {
+    transition: background .2s linear, opacity .2s linear !important;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.list-items .slider-linker .item-image .layzing img {
+    width: 100%;
+    height: 100%;
+}
+
+.item-info {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(220, 224, 236, .5));
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    height: 90px;
+    margin-top: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.item-info-title,
+.item-info-promo {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.item-info-promo {
+    color: #333;
+}
+
+.item-info-action {
+    color: #e1251b;
+    border-radius: 14px;
+    width: 82px;
+    height: 24px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    line-height: 22px;
+    font-weight: 700;
+    padding-left: 4px;
+    font-size: 12px;
+    border: 1px solid #e1251b;
+    margin-top: 4px;
+    -webkit-transition: background-color .2s ease;
+    transition: background-color .2s ease;
+}
+
+.item-info-action:hover {
+    background-color: #e1251b;
+    color: #fff;
+}
+
+.item-info-action>i.iconfont {
+    margin-left: -4px;
+    font-size: 16px;
+    font-weight: 1000;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -2px;
+    transform: scale(.5);
+    font-weight: 900;
+    font-family: iconfont, sans-serif;
+}

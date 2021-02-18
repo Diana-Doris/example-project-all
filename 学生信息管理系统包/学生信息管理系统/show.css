@@ -1,0 +1,173 @@
+html, body{
+    height: 100%;
+}
+body, dd, dl{
+    margin: 0;
+}
+.clear{
+    content: '';
+    display: block;
+    clear: both;
+}
+/* 头部 */
+.header{
+    width: 100%;
+    height: 70px;
+    background-color: #354457;
+    position: relative;
+}
+.header img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: 20px;
+}
+.header span{
+    font-size: 14px;
+    color: #b3bcc5;
+    line-height: 70px;
+    padding-left: 55px;
+}
+/* 导航区 */
+.nav{
+    float: left;
+    top: calc(100% - 70px);
+    left: 0px;
+    width: 200px;
+    height: 100%;
+    background-color: #4d5e70;
+}
+.nav dl{
+    line-height: 40px;
+    font-size: 14px;
+    color: #b3bcc5;
+}
+.nav dl dt{
+    padding-left: 10px;
+}
+.nav dl dd{
+    padding-left: 40px;
+    cursor: pointer;
+}
+.nav dl dd:hover{
+    background-color: rgba(255,255,255, 0.5);
+    color: #354457;
+}
+.nav dl dd.active{
+    background-color: #ddd;
+    color: #354457;
+}
+
+/* 右边内容区 ---- 添加学生 */
+.content{
+    background-color: #eee;
+    margin-left: 200px;
+    height: 100%
+}
+.content .dis {
+    display: none;
+}
+.content .dis.showcontent{
+    display: block;
+}
+.content .add-student #student-add-form{    
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.content .add-student #student-add-form div{
+    padding: 5px 0 ;
+}
+.content .add-student #student-add-form div label:not(.sex){
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 10px;
+}
+.content .add-student #student-add-form .btn{
+    padding: 5px 27px;
+}
+
+
+/* 右边内容区 ---- 显示信息 */
+.content .show-student{
+    display: none;    
+    width: 100%; 
+}
+.content .show-student table{
+    border-collapse: collapse;
+    margin: 0 auto;   
+    width: 100%;
+}
+.content .show-student table, thead, tbody, tr, th{
+    border: 2px solid #eee;
+    border-spacing: 2px;
+    background-color: #e3e8ee;
+    color: #646987;
+}
+.content .show-student table th{
+    text-align: center;
+    padding: 4px 10px;
+}
+.content .show-student table th .edit,.del{
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.content .show-student table th .edit{
+    background-color: rgb(107, 152, 250);
+    margin-right: 10px;
+}
+.content .show-student table th .del{
+    background-color: rgb(226, 86, 114);
+}
+
+/* 弹框内容 */
+.dialog{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgb(107, 152, 250,0.2)
+}
+.dialog.showshow{
+    display: none;
+}
+.dialog .content-dialog{
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -200px;
+    display: block;
+}
+.dialog .content-dialog h3{
+    padding-left: 30px;
+}
+.dialog .content-dialog .editform{
+    width: 400px;
+    margin-left: 100px;
+}
+.dialog .content-dialog form div label:not(.sex){
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+    margin: 5px auto;
+}
+.dialog .content-dialog form div #submitbtn{
+    margin-left: 45px;
+    margin-top: 5px;
+    width: 100px;
+}
+
+
+
+

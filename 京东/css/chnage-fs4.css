@@ -1,0 +1,32 @@
+
+
+/* .service_outry-content-extend {
+    transform: translateY(-202px);
+} */
+/* .close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -10px;
+    cursor: pointer;
+  }
+  .close::after,
+  .close::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 20px;
+    background-color: black;
+  }
+
+  .close::after {
+    transform: rotateZ(45deg);
+  }
+
+  .close::before {
+    transform: rotateZ(-45deg);
+  } */

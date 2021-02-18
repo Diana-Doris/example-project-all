@@ -1,0 +1,182 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-21 10:11:39
+ * @LastEditTime: 2020-11-22 12:37:45
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \响应式css\响应式网站-css\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应式开发-css</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 头部 -->
+      <header>
+        <div class="titlepic"></div>
+        <nav>
+          <div class="Collections">
+            <div class="item">网站首页1</div>
+            <div class="item">网站首页2</div>
+            <div class="item">网站首页3</div>
+            <div class="item">网站首页4</div>
+            <div class="item">网站首页5</div>
+          </div>
+          <div class="footpic"></div>
+        </nav>
+      </header>
+      <!-- 中间轮播图 -->
+      <div class="pacAll">
+        <ul class="inner">
+          <li><img src="./images/1.jpg" alt="" /></li>
+          <li><img src="./images/2.jpg" alt="" /></li>
+          <li><img src="./images/3.jpg" alt="" /></li>
+        </ul>
+      </div>
+      <!-- 热销项目 -->
+      <div id="porject">
+        <div class="title">
+          <h3>热销项目</h3>
+          <p>Hot selling tour line</p>
+        </div>
+        <div class="list">
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+          <div>
+            <img src="images/7.png" alt="">
+            <p>尼罗河是世界上最长的河流</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+    <script>
+      var display = true;
+      $(".footpic").click(function () {
+        $("<style></style>")
+          .append(
+            `.wrapper header nav .Collections{
+            transform: scaley(${display ? 1 : 0});
+            transition:transform .5s;    
+          }`
+          )
+          .appendTo($("head"));
+
+        display = !display;
+      });
+
+      $(".inner>li:nth-child(1)").clone(true).appendTo($(".inner"));
+      var oindex = $(".inner>li").length;
+      var num = 0;
+
+    //   function round(){
+    //     num++;
+    //     if (num >= oindex) {
+    //       num = 0;
+    //     }
+    //     picMove();
+    //   }
+      function picMove() {
+        // console.log(num);
+        num++;
+        if (num >= oindex) {
+          num = 0;
+        }
+        
+        // console.log(num)
+        $("ul.inner").css({
+          'transition': '.5s',
+          left: -num*100 + "vw",
+          
+        }).on('transitionend', function () {
+            // console.log('a')
+            if(num == oindex - 1){
+              $(this).css({
+                left: 0,
+                'transition':''
+              })
+              num = 0;
+            }
+        })
+        
+      }
+      var timer = setInterval(() => {
+        picMove();
+      }, 1000);
+      
+      $('.pacAll').hover(function(){
+          clearInterval(timer);
+          timer = null;
+        }, function(){
+          timer = setInterval(() => {
+            picMove();
+          }, 1000);
+        })
+      $('html').on('visibilitychange', function(){
+        if($(this).hide()){
+            clearInterval(timer);
+            timer = null;
+        }else{
+          timer = setInterval(() => {
+            picMove();
+          }, 1000);
+        }
+      })
+/*
+    visibilitychange        能见度更改事件，当页面显示或者隐藏的时候会触发
+    document.hidden
+        true        页面隐藏
+        false        页面显示
+ */
+      
+    </script>
+  </body>
+</html>

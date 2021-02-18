@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="loginForm">
+        <div>
+            <label for="account">账号</label>
+            <input type="text" name="account" id="account">
+        </div>
+        <div>
+           <label for="password">密码</label>
+           <input type="password" name="password">
+       </div>
+       <div>
+           <button id="submit">提交</button>
+       </div>
+    </form>
+   
+    
+</body>
+<script src="https://lib.baomitu.com/jquery/3.5.1/jquery.js"></script>
+<script>
+    // 注册成功
+    //  $.ajax({
+    //     type: "post",
+    //     url:'http://open.duyiedu.com/api/student/stuRegister',
+    //     dataType:'json',
+    //     data:{
+    //         appkey:'Doris_1602766368421',
+    //         account: 'chenjaixin',
+    //         username:'cc',            
+    //         password: '1234565432',
+    //         rePassword:'1234565432'
+    //     },
+    //     success: function (res) { 
+    //         console.log(res)                           
+    //     }
+    // });
+
+    // 开始存入登录状态
+    $('#submit').click(function(e){
+        e.preventDefault();
+        var asquiredata = $('#loginForm').serialize();
+        asquiredata += '&appkey=Doris_1602766368421';
+        console.log(asquiredata);
+        $.ajax({
+        type: "post",
+        url:'http://open.duyiedu.com/api/student/stuLogin',
+        dataType:'json',
+        data:asquiredata,
+        success: function (res) { 
+            console.log(res);
+            sessionStorage.setItem('studentMsg', asquiredata)
+            location.href = './index.html';            
+        }
+    });
+    })
+    
+</script>
+</html>

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font_supdlrcet1/iconfont.eot');
+    src: url('../font_supdlrcet1/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../font_supdlrcet1/iconfont.woff2') format('woff2'),
+        url('../font_supdlrcet1/iconfont.woff') format('woff'),
+        url('../font_supdlrcet1/iconfont.ttf') format('truetype'),
+        url('../font_supdlrcet1/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.my-swiper ul, .my-swiper li{
+    padding: 0;;
+    margin: 0;
+    list-style: none;
+}
+.my-swiper{
+    position: relative;
+    overflow: hidden;
+}
+.my-swiper.my-fade .my-content{
+    position: absolute;
+}
+.my-swiper.my-fade .my-content li{
+    position: absolute;
+}
+.my-swiper.my-animate .my-content{
+    position: absolute;
+}
+
+.my-swiper.my-animate .my-content::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.my-swiper.my-animate .my-content li{
+    float: left;
+}
+
+
+.my-swiper .btn{
+    width: 25px;
+    height: 35px;
+    background-color: rgba(0,0,0,.15);
+    position: absolute;
+    top: calc(50% - 17px);
+    margin: auto 0;
+
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'iconfont';
+    font-size: 10px;
+}
+.my-swiper .btn.rBtn{
+    right: 0;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+.my-swiper .btn.lBtn{
+    left: 0;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.my-swiper .circles{
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.my-swiper .circles .spot{
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    margin: 0 3px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .15);
+}
+.my-swiper .circles .spot.spot-active{
+    background-color: #fff;
+}
